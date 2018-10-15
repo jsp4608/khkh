@@ -1,0 +1,20 @@
+.header-wrap{
+	max-height: 150px;
+	padding: 20px;
+	border: 1px solid black;
+}
+
+
+.body-wrap{
+	height: 90%;
+	padding: 20px;
+	margin: 10px 0px;
+	border: 1px solid black;
+}
+
+.footer-wrap{
+	max-height: 300px;
+	height: 300px;
+	padding: 20px;
+	border: 1px solid black;
+}
