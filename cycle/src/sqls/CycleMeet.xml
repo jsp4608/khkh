@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="CycleMeet">
+
+<insert id="writeMeet" parameterType="cycle.model.MeetDto">
+	INSERT INTO MEETBBS
+	(MEET_SEQ, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG)
+	VALUES(MEET_SEQ.NEXTVAL, ' ', #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, ' ')
+</insert>
+
+<select id="getMeetList" resultType="cycle.model.MeetDto">
+	SELECT MEET_SEQ, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG
+	FROM MEETBBS
+	ORDER BY SDATE ASC
+</select>
+
+<select id="getMeet" parameterType="java.lang.Integer" resultType="cycle.model.MeetDto">
+	SELECT MEET_SEQ, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG
+	FROM MEETBBS
+	WHERE MEET_SEQ=#{seq}
+</select>
+
+
+</mapper>

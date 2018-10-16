@@ -35,14 +35,14 @@
 	<!-- mybatis setting -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:sqls/*.xml"/>	
+		<property name="mapperLocations" value="classpath*:sqls/*.xml"/>	
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"/>
-		<constructor-arg index="1" value="SIMPLE"/>	<!-- BATCH/SIMPLE -->	
+		<constructor-arg index="1" value="SIMPLE"/>	
 	</bean>
-	
+	 
 	<!-- jdbc -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>	

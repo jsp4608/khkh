@@ -21,10 +21,26 @@
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
 </definition>
 
+<!-- meet -->
+
 <definition name="meet.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/common/left-meet.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
 </definition>
+
+<definition name="meetlist.tiles" extends="meet.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/meet/meetlist.jsp"/>
+</definition>
+
+<definition name="meetwrite.tiles" extends="meet.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/meet/meetwrite.jsp"/>
+</definition>
+
+<definition name="meetdetail.tiles" extends="meet.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/meet/meetdetail.jsp"/>
+</definition>
+
+<!-- -->
 
 <definition name="info.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/common/left-info.jsp"/>
