@@ -32,7 +32,7 @@
 		<td>
 			<c:if test="${meet.del == 0 }">
 				<a href="meetdetail.do?seq=${meet.seq}">
-				${meet.location }
+				${meet.title }
 				</a>
 			</c:if>
 			<c:if test="${meet.del == 1 }">

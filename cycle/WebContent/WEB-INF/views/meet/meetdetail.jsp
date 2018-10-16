@@ -50,7 +50,7 @@
 	<tr>
 		<th>내용</th>
 		<td style="text-align: left"><textarea rows="10" cols="50" 
-		name='content' id="_content">${meet.content}</textarea></td>
+		name='content' id="_content" readonly="readonly">${meet.content}</textarea></td>
 	</tr>
 	<tr>
 		<td colspan="2" style="height: 50px; text-align: center;">

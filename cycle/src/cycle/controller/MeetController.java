@@ -38,7 +38,11 @@ public class MeetController {
 		List<MeetDto> list = meetDao.getMeetList();
 		
 		model.addAttribute("meetlist", list);
-		
+		/*
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("seq: " + list.get(i).toString());
+		}
+		*/
 		return "meetlist.tiles";
 	}
 	
@@ -71,10 +75,7 @@ public class MeetController {
 		
 		meet = meetDao.getMeet(seq);
 		
-		System.out.println("meet = " + meet);
-		
 		model.addAttribute("meet", meet);
-		
 		return "meetdetail.tiles";
 	}
 	

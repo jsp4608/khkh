@@ -7,20 +7,19 @@
 
 <insert id="writeMeet" parameterType="cycle.model.MeetDto">
 	INSERT INTO MEETBBS
-	(MEET_SEQ, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG)
 	VALUES(MEET_SEQ.NEXTVAL, ' ', #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, ' ')
 </insert>
 
 <select id="getMeetList" resultType="cycle.model.MeetDto">
-	SELECT MEET_SEQ, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG
+	SELECT *
 	FROM MEETBBS
 	ORDER BY SDATE ASC
 </select>
 
 <select id="getMeet" parameterType="java.lang.Integer" resultType="cycle.model.MeetDto">
-	SELECT MEET_SEQ, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG
+	SELECT *
 	FROM MEETBBS
-	WHERE MEET_SEQ=#{seq}
+	WHERE SEQ=#{seq}
 </select>
 
 
