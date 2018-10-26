@@ -19,13 +19,15 @@
 
 .body-wrap{
 	width: 100%;
-	border: 1px solid black;
+	height: 390%;
+/* 	border: 1px solid black;*/
 }
 
 .footer-wrap{
 	clear: both;
 	max-height: 300px;
-	height: 300px;
+	margin-top: 130%;
+	height: 100px;
 	padding: 20px;
 	border: 1px solid black;
 }

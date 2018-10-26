@@ -32,6 +32,81 @@
 </definition>
 
 
+<!-- 국토종주란?   -->
+<definition name="Certifi.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/Certifi.jsp"/>
+</definition>
+
+<!-- 아라뱃길   -->
+<definition name="Araba.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/Araba.jsp"/>
+</definition>
+
+<!-- 한강   -->
+<definition name="Han.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/Han.jsp"/>
+</definition>
+
+<!-- 남한   -->
+<definition name="NorthHan.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/NorthHan.jsp"/>
+</definition>
+
+<!-- 북한   -->
+<definition name="Northbug.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/Northbug.jsp"/>
+</definition>
+
+<!-- 새재   -->
+<definition name="Thenew.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/Thenew.jsp"/>
+</definition>
+
+<!-- 낙동강   -->
+<definition name="Nakdon.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/Nakdon.jsp"/>
+</definition>
+
+<!-- 금강   -->
+<definition name="Geumgang.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/Geumgang.jsp"/>
+</definition>
+
+
+<!-- 연산강   -->
+<definition name="Yeongsan.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/Yeongsan.jsp"/>
+</definition>
+
+<!-- 섬진강   -->
+<definition name="Seomjin.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/Seomjin.jsp"/>
+</definition>
+
+<!-- 오천길   -->
+<definition name="ocheon.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/ocheon.jsp"/>
+</definition>
+
+<!-- 동해안(강원)   -->
+<definition name="EastCoast_Gangwon.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/EastCoast_Gangwon.jsp"/>
+</definition>
+
+<!-- 동해안(경북)   -->
+<definition name="EastCoast_Kyungbuk.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/EastCoast_Kyungbuk.jsp"/>
+</definition>
+
+<!-- 제주도  -->
+<definition name="jeju_Fantasy.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/Course/jeju_Fantasy.jsp"/>
+</definition>
+
+
+
+
+
 
 
 
