@@ -55,12 +55,12 @@
 	<put-attribute name="main" value="/WEB-INF/views/main/courseConfirm.jsp"/>
 </definition>
 
-<<<<<<< HEAD
+
 <definition name="adminCourse.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-admin.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/main/courseConfirmDetail.jsp"/>
 </definition>
-=======
+
 <!-- 국토종주란?   -->
 <definition name="Certifi.tiles" extends="course.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/Course/Certifi.jsp"/>
@@ -132,11 +132,6 @@
 	<put-attribute name="main" value="/WEB-INF/views/Course/jeju_Fantasy.jsp"/>
 </definition>
 
-
-
-
-
->>>>>>> origin/현우
 
 
 

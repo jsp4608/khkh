@@ -24,7 +24,6 @@ public class CourseController {
 	@Autowired
 	CourseDao dao;
 
-<<<<<<< HEAD
 	
 	@RequestMapping(value="course.do", method=RequestMethod.GET)
 	public String course() {
@@ -57,16 +56,6 @@ public class CourseController {
 		
 		boolean result = dao.submitCourse(dto);
 		
-		if(result) {
-
-		}else {
-
-		}
-		
-=======
-	@RequestMapping(value = "course.do", method = RequestMethod.GET)
-	public String main() {
->>>>>>> origin/현우
 		return "course.tiles";
 		
 		
