@@ -37,7 +37,6 @@
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-meet.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
 </definition>
-<<<<<<< HEAD
 
 
 
@@ -47,23 +46,7 @@
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/common/main-pdslist.jsp"/>
 </definition>
-=======
-<!-- 
-<definition name="meetlist.tiles" extends="meet.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/meet/meetlist.jsp"/>
-</definition> 
->>>>>>> origin/경훈
 
-<definition name="pdsschedule.tiles" extends="basic.tiles">
-	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/common/cycleSchedule.jsp"/>
-</definition>
-
-<definition name="pdscertification.tiles" extends="basic.tiles">
-	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/common/certification.jsp"/>
-</definition>
--->
 <definition name="meetupdate.tiles" extends="meet.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/meet/meetpollupdate.jsp"/>
 </definition>
