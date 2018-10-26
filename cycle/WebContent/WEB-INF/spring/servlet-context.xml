@@ -32,10 +32,7 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 	</bean>
 	
-	
-	
-	
-	
+
 	<!-- java 파일의 공통 package 설정 -->
 	<context:component-scan base-package="cycle"/>
 	
