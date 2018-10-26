@@ -40,9 +40,9 @@
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"/>
-		<constructor-arg index="1" value="SIMPLE"/>	
+		<constructor-arg index="1" value="SIMPLE"/>		
 	</bean>
-	 
+	
 	<!-- jdbc -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>	
