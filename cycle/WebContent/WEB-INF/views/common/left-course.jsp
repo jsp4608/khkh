@@ -84,7 +84,7 @@ h4{text-align: center;}
 		
 		
 		<li class="subtitle">동호회 자전거길</li>
-		<li class="menu_item"> <a href="#none" onclick="url_Certifi()" title="글쓰기">글쓰기</a></li>	
+		<li><a href="courseSuggest.do">코스 추천하기</a></li>
 	</ul>
 </div>
 

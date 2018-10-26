@@ -17,7 +17,7 @@
 
 
 <definition name="course.tiles" extends="basic.tiles">
-	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-course.jsp"/>
+	<put-attribute name="left-menu" value="/WEB-INF/views/common/left-course.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
 </definition>
 
