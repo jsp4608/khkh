@@ -26,15 +26,11 @@
 			<tiles:insertAttribute name="left-menu" />
 		</div>
 
-		<div class="body-wrap" style="overflow:scroll">
+		<div class="body-wrap" style="height: 300%; background: #f3f6f7">
 			<tiles:insertAttribute name="main" />
+			
 		</div>
 	</div>
-
-
-	<%-- <div class="footer-wrap">
-		<tiles:insertAttribute name="footer" />
-	</div> --%>
 
 
 </body>

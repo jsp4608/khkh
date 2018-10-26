@@ -11,7 +11,7 @@
 <a href="main.do" >HOME</a> 
 <a href="course.do" >코스정보</a> 
 <a href="meet.do" >모임</a> 
-<a href="info.do" >정보</a> 
+<a href="pdslist.do" >정보</a> 
 <a href="" >로그인</a> 
 
 

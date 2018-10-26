@@ -16,15 +16,21 @@
 
 
 
+
+<!-- course -->
+
 <definition name="course.tiles" extends="basic.tiles">
-	<put-attribute name="left-menu" value="/WEB-INF/views/common/left-course.jsp"/>
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-course.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
 </definition>
+
 
 
 <definition name="courseSuggest.tiles" extends="course.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/main/courseSuggest.jsp"/>
 </definition>
+
+<!-- meet -->
 
 
 <definition name="meet.tiles" extends="basic.tiles">
@@ -32,22 +38,41 @@
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
 </definition>
 
-<definition name="meetlist.tiles" extends="meet.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/meet/meetlist.jsp"/>
-</definition>
 
-<definition name="meetwrite.tiles" extends="meet.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/meet/meetwrite.jsp"/>
-</definition>
 
-<definition name="meetdetail.tiles" extends="meet.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/meet/meetdetail.jsp"/>
-</definition>
-
+<!-- info -->
 
 <definition name="info.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/main-pdslist.jsp"/>
+</definition>
+
+<definition name="pdsschedule.tiles" extends="basic.tiles">
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/cycleSchedule.jsp"/>
+</definition>
+
+<definition name="pdscertification.tiles" extends="basic.tiles">
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/certification.jsp"/>
+</definition>
+
+
+<definition name="pdswrite.tiles" extends="info.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/common/main-pdswrite.jsp"/>
+</definition>
+
+<definition name="pdsdetail.tiles" extends="info.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/common/main-pdsdetail.jsp"/>
+</definition>
+
+<definition name="pdsupdate.tiles" extends="info.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/common/main-pdsupdate.jsp"/>
+</definition>
+
+<definition name="pdsreply.tiles" extends="info.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/common/main-pdsreply.jsp"/>
+
 </definition>
 
 <definition name="admin.tiles" extends="basic.tiles">
