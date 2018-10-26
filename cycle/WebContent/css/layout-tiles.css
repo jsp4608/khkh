@@ -6,7 +6,6 @@
 
 .full-wrap{
 	display: flex;
-
 	height: 90%;
 	margin: 10px 0px;
 }
@@ -15,9 +14,11 @@
 	width: 200px;
 	margin-right: 10px;
 	border: 1px solid black;
+	background: #afbdd3;
 }
 
 .body-wrap{
+	padding: 20px;
 	width: 100%;
 	border: 1px solid black;
 }

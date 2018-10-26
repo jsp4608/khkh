@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Course">
+
+<insert id="submitCourse" parameterType="cycle.model.CourseDto">
+	INSERT INTO COURSETEMP
+	VALUES(SEQ_COURSETEMP.NEXTVAL, #{title}, 'temp', #{description}, #{len}, #{courseday}, #{mapdata})
+</insert>
+
+<select id="getCourseSuggestion" resultType="cycle.model.CourseDto">
+	SELECT * FROM COURSETEMP
+	ORDER BY SEQ
+</select>
+
+<select id="getCourseDetail" parameterType="java.lang.Integer" resultType="cycle.model.CourseDto">
+	SELECT * FROM COURSETEMP
+	WHERE SEQ=#{seq}
+</select>
+
+
+</mapper>  
+
+
+
+
+
+
+

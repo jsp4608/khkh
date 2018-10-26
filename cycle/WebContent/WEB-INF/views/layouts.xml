@@ -17,21 +17,33 @@
 
 
 <definition name="course.tiles" extends="basic.tiles">
-	<put-attribute name="left-menu" value="/WEB-INF/views/common/left-course.jsp"/>
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-course.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
 </definition>
 
+<definition name="courseSuggest.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/main/courseSuggest.jsp"/>
+</definition>
+
 <definition name="meet.tiles" extends="basic.tiles">
-	<put-attribute name="left-menu" value="/WEB-INF/views/common/left-meet.jsp"/>
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-meet.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
 </definition>
 
 <definition name="info.tiles" extends="basic.tiles">
-	<put-attribute name="left-menu" value="/WEB-INF/views/common/left-info.jsp"/>
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
 </definition>
 
+<definition name="admin.tiles" extends="basic.tiles">
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-admin.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/main/courseConfirm.jsp"/>
+</definition>
 
+<definition name="adminCourse.tiles" extends="basic.tiles">
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-admin.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/main/courseConfirmDetail.jsp"/>
+</definition>
 
 
 

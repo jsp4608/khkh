@@ -13,3 +13,6 @@
 <a href="meet.do" >모임</a> 
 <a href="info.do" >정보</a> 
 <a href="" >로그인</a> 
+
+
+<a href="admin.do" style="position: absolute; right:20px">관리자</a>
