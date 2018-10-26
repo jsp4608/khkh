@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -11,7 +11,6 @@
 <%
 response.sendRedirect("main.do");
 %>
-
 
 </body>
 </html>

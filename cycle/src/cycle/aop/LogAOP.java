@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class LogAOP {
 	
-	@Around("within(kh.com.a.controller.*)")
+	@Around("within(cycle.controller.*)")
 	public Object loggerAop(ProceedingJoinPoint joinpoint)throws Throwable {
 		
 		String signatureStr = joinpoint.getSignature().toShortString();

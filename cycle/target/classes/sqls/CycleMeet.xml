@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="CycleMeet">
-
+<!-- 
 <insert id="writeMeet" parameterType="cycle.model.MeetDto">
 	INSERT INTO MEETBBS
 	VALUES(MEET_SEQ.NEXTVAL, ' ', #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, ' ')
@@ -16,11 +16,254 @@
 	ORDER BY SDATE ASC
 </select>
 
-<select id="getMeet" parameterType="java.lang.Integer" resultType="cycle.model.MeetDto">
-	SELECT *
+<select id="getMeetPagingList" parameterType="cycle.model.MeetParam" resultType="cycle.model.MeetDto">
+	SELECT SEQ, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG
+	FROM (SELECT ROW_NUMBER() OVER(ORDER BY SDATE ASC) AS RNUM, 
+	SEQ, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG
 	FROM MEETBBS
-	WHERE SEQ=#{seq}
+	WHERE 1=1 
+		<if test="s_category != '' and s_category != null 
+		and s_keyword != '' and s_keyword != null">
+	  		<if test="s_category == 'title'">
+	  			AND TITLE LIKE '%'||#{s_keyword}||'%' 
+	  		</if>		  		
+	  		<if test="s_category == 'contents'">
+	  			AND CONTENT LIKE '%'||#{s_keyword}||'%'
+	  		</if>		  		
+		</if>) A
+	WHERE RNUM BETWEEN ${start} AND ${end}
+</select>
+ -->
+ <!-- 
+<select id="getMeetCount" parameterType="cycle.model.MeetParam" resultType="java.lang.Integer">
+	SELECT NVL(COUNT(*), 0) AS CNT
+	FROM MEETBBS
+	WHERE 1=1
+	<if test="s_category != '' and s_category != null 
+	and s_keyword != '' and s_keyword != null">		  		
+  		<if test="s_category == 'title'">
+  			AND TITLE LIKE '%'||#{s_keyword}||'%'  
+  		</if>		  		
+  		<if test="s_category == 'contents'">
+  			AND CONTENT LIKE '%'||#{s_keyword}||'%'
+  		</if>		  		
+    </if>
 </select>
 
+<update id="updateMeet" parameterType="cycle.model.MeetDto">
+	UPDATE MEETBBS SET
+	TITLE=#{title}, LOCATION=#{location}, SDATE=#{sdate}, EDATE=#{edate}, CONTENT=#{content}, WDATE=SYSDATE
+	WHERE SEQ=#{seq}
+</update>
+
+<update id="deleteMeet" parameterType="java.lang.Integer">
+	UPDATE MEETBBS
+	SET DEL=1
+	WHERE SEQ=#{seq}
+</update>
+ -->
+
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+<!-- 투표 제목의 정보 -->
+<select id="getMeetAllList" resultType="cycle.model.MeetPollDto">	
+	SELECT *
+	FROM MEETPOLL
+	ORDER BY SDATE DESC	
+</select>
+
+<!-- 투표를 했는지 확인용 -->
+<select id="isVote" parameterType="cycle.model.Voter" resultType="java.lang.Integer">	
+	SELECT COUNT(*)
+	FROM VOTER
+	WHERE POLLID=#{pollid} AND ID='aaa'
+				<!-- 투표번호			User -->
+</select>
+ 		
+<insert id="makeMeet" parameterType="cycle.model.MeetPollDto">
+	INSERT INTO MEETPOLL
+	(POLLID, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG, ITEMCOUNT, POLLTOTAL)
+	VALUES
+	(MEET_SEQ.NEXTVAL, 'aaa', #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, ' ', #{itemcount}, 0)		
+</insert>
+
+<insert id="makePollSub" parameterType="cycle.model.PollSubDto">
+	INSERT INTO POLLSUB
+	(POLLSUBID, POLLID, ANSWER, ACCOUNT)
+	VALUES
+	(POLLSUB_SEQ.NEXTVAL, (SELECT NVL(MAX(POLLID), 0) FROM MEETPOLL),
+	#{answer}, 0)
+</insert>
+
+<update id="updateMeet" parameterType="cycle.model.MeetPollDto">
+	UPDATE MEETPOLL SET
+	TITLE=#{title}, CONTENT=#{content}, WDATE=SYSDATE, SDATE=#{sdate}, EDATE=#{edate}, 
+	LOCATION=#{location}, ITEMCOUNT=#{itemcount},	POLLTOTAL=0
+	WHERE POLLID=#{pollid}
+</update>
+
+<!-- 
+<update id="updatePollSub" parameterType="cycle.model.PollSubDto">
+	UPDATE POLLSUB SET
+	ANSWER=#{answer}
+	WHERE POLLID=#{pollid}
+</update>
+-->
+
+<update id="updatePollSub" parameterType="cycle.model.PollSubDto">
+	MERGE INTO POLLSUB P
+	USING DUAL
+	ON (P.POLLSUBID = ${pollsubid})
+	WHEN MATCHED THEN
+	  UPDATE SET POLLID=#{pollid, jdbcType=INTEGER}, ANSWER=#{answer, jdbcType=VARCHAR}, ACCOUNT=0
+	WHEN NOT MATCHED THEN
+	  INSERT (POLLSUBID, POLLID, ANSWER, ACCOUNT)
+	  VALUES (POLLSUB_SEQ.NEXTVAL, #{pollid, jdbcType=INTEGER}, #{answer, jdbcType=VARCHAR}, 0)
+</update>
+
+<delete id="deletePollSub" parameterType="cycle.model.MeetPollDto">
+	DELETE FROM POLLSUB 
+	WHERE POLLSUBID in (SELECT POLLSUBID FROM(SELECT * FROM POLLSUB 
+	WHERE POLLID=#{pollid} ORDER BY POLLSUBID DESC) WHERE ROWNUM between 1 and #{del})
+</delete>
+
+<update id="deleteMeet" parameterType="java.lang.Integer">
+	UPDATE MEETPOLL
+	SET DEL=1
+	WHERE POLLID=#{pollid}
+</update>
+
+<select id="getMeet" 
+	parameterType="cycle.model.MeetPollDto"
+	resultType="cycle.model.MeetPollDto">
+	SELECT *
+	FROM MEETPOLL
+	WHERE POLLID=#{pollid}
+</select>
+
+<select id="getMeetSeq" parameterType="java.lang.Integer" resultType="cycle.model.MeetPollDto">
+	SELECT *
+	FROM MEETPOLL
+	WHERE POLLID=#{pollid}
+</select>
+
+<select id="getPollSubList" 
+	parameterType="cycle.model.MeetPollDto"
+	resultType="cycle.model.PollSubDto">
+	SELECT POLLSUBID, POLLID, ANSWER, ACCOUNT
+	FROM POLLSUB
+	WHERE POLLID=#{pollid}
+	order by pollsubid
+</select>
+<!-- 
+<select id="getPollSubListSeq" 
+	parameterType="java.lang.Integer"
+	resultType="cycle.model.PollSubDto">
+	SELECT *
+	FROM POLLSUB
+	WHERE POLLID=#{pollid}
+</select>
+-->
+<select id="getMeetPagingList" parameterType="cycle.model.MeetParam" resultType="cycle.model.MeetPollDto">
+	SELECT POLLID, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG, ITEMCOUNT, POLLTOTAL
+	FROM (SELECT ROW_NUMBER() OVER(ORDER BY SDATE ASC) AS RNUM, 
+	POLLID, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG, ITEMCOUNT, POLLTOTAL
+	FROM MEETPOLL
+	WHERE 1=1 
+		<if test="s_category != '' and s_category != null 
+		and s_keyword != '' and s_keyword != null">
+	  		<if test="s_category == 'title'">
+	  			AND TITLE LIKE '%'||#{s_keyword}||'%' 
+	  		</if>		  		
+	  		<if test="s_category == 'contents'">
+	  			AND CONTENT LIKE '%'||#{s_keyword}||'%'
+	  		</if>		  		
+		</if>) A
+	WHERE RNUM BETWEEN ${start} AND ${end}
+</select>
+
+<select id="getMeetCount" parameterType="cycle.model.MeetParam" resultType="java.lang.Integer">
+	SELECT NVL(COUNT(*), 0) AS CNT
+	FROM MEETPOLL
+	WHERE 1=1
+	<if test="s_category != '' and s_category != null 
+	and s_keyword != '' and s_keyword != null">		  		
+  		<if test="s_category == 'title'">
+  			AND TITLE LIKE '%'||#{s_keyword}||'%'  
+  		</if>		  		
+  		<if test="s_category == 'contents'">
+  			AND CONTENT LIKE '%'||#{s_keyword}||'%'
+  		</if>		  		
+    </if>
+</select>
+
+<!-- Voter -->
+<insert id="pollingVote" parameterType="cycle.model.Voter">
+	INSERT INTO VOTER(VOTERID, POLLID, POLLSUBID, ID, REGDATE)
+	VALUES(VOTER_SEQ.NEXTVAL, #{pollid}, #{pollsubid}, 'aaa', SYSDATE)
+</insert>
+
+<!-- PollSub -->
+<update id="pollingSub" parameterType="cycle.model.Voter">
+	UPDATE POLLSUB
+	SET ACCOUNT=ACCOUNT+1
+	WHERE POLLID=#{pollid} AND POLLSUBID=#{pollsubid}
+</update>
+
+<!-- Poll -->
+<update id="pollingPoll" parameterType="cycle.model.Voter">
+	UPDATE MEETPOLL
+	SET POLLTOTAL=POLLTOTAL+1
+	WHERE POLLID=#{pollid}
+</update>
+
+<insert id="meetJoin" parameterType="cycle.model.MeetJoinDto">
+	INSERT INTO MEETJOIN
+	VALUES(#{id}, #{pollid})
+</insert>
+
+<update id="increaseMemcnt" parameterType="java.lang.Integer">
+	UPDATE MEETPOLL
+	SET MEMCNT = MEMCNT+1
+	WHERE POLLID=#{pollid}
+</update>
+
+<select id="getMeetJoin" parameterType="cycle.model.MeetJoinDto" resultType="cycle.model.MeetJoinDto">
+	SELECT ID, POLLID
+	FROM MEETJOIN
+	WHERE ID=#{id} AND POLLID=#{pollid}
+</select>
+
+<update id="dcAccount" parameterType="cycle.model.PollSubDto">
+	UPDATE POLLSUB
+	SET ACCOUNT = ACCOUNT-1
+	WHERE POLLSUBID=(SELECT POLLSUBID
+	FROM VOTER 
+	WHERE POLLID=#{pollid} AND ID='aaa')
+</update>
+
+<update id="dcPolltotal" parameterType="cycle.model.MeetPollDto">
+	UPDATE MEETPOLL
+	SET POLLTOTAL = POLLTOTAL-1
+	WHERE POLLID=(SELECT POLLID
+	FROM VOTER 
+	WHERE POLLID=#{pollid} AND ID='aaa')
+</update>
+
+<delete id="deletePollCount" parameterType="cycle.model.Voter">
+	DELETE FROM VOTER
+	WHERE POLLID=#{pollid} AND ID='aaa'
+</delete>
+
+<select id="getRepList" parameterType="cycle.model.ReplyDto" resultType="cycle.model.ReplyDto">
+	SELECT * FROM REP 
+	WHERE REF=#{pollid} 
+	ORDER BY STEP ASC
+</select>
+
+<insert id="insertRep" parameterType="cycle.model.ReplyDto">
+	INSERT INTO REP 
+	VALUES(SEQ_REP.NEXTVAL, 'aaa', #{pollid}, 0, 0, 0, #{content}, SYSDATE, 0)
+</insert>
 
 </mapper>
