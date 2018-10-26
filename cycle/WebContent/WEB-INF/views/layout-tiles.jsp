@@ -32,9 +32,9 @@
 	</div>
 
 
-	<div class="footer-wrap">
+	<%-- <div class="footer-wrap">
 		<tiles:insertAttribute name="footer" />
-	</div>
+	</div> --%>
 
 
 </body>
