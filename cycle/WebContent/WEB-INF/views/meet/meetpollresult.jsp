@@ -122,7 +122,7 @@
 		
 		<jsp:setProperty property="acount" name="vbean" value="${psub.account }"/>	
 		<jsp:setProperty property="total" name="vbean" value="${meet.polltotal }"/> 
-		<jsp:setProperty property="id" name="vbean" value="aaa"/> 
+		<%-- <jsp:setProperty property="id" name="vbean" value="aaa"/>  --%>
 		
 		<table class="list_table" style="width: 95%">
 		<col width="50"><col width="500">
