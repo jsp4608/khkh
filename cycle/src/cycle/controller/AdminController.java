@@ -57,5 +57,28 @@ public class AdminController {
 		
 	}
 	
+	
+	@RequestMapping(value="suggestConfirm.do")
+	public String suggestConfirm(@RequestParam("object") String obj) {
+		
+		
+	
+		
+		return "admin.tiles";
+		
+		
+	}
+	
+	@RequestMapping(value="suggestDelete.do")
+	public String suggestDelete(@RequestParam("object") String obj) {
+		
+		
+	
+		
+		return "admin.tiles";
+		
+		
+	}
+	
 
 }

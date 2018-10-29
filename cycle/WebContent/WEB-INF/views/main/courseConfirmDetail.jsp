@@ -33,7 +33,8 @@
 	</form>
 
 	<div>
-		<button id ="confirm">경로 승인</button>
+		<button id ="confirm" >경로 승인</button>
+		<button id ="delete">삭제</button>
 	</div>
 
 
@@ -113,20 +114,7 @@
 		}
 		
 		map.setCenter(points[0]);
-		
-/* 		for(var i = 0; i < points.length-1; i++){
-			var blockArrowLine = new naver.maps.Polyline({
-		        path: [
-		            points[i],
-		            points[i+1]
-		        ],
-		        map: map,
-		        endIcon: naver.maps.PointingIcon.BLOCK_ARROW,
-		        strokeColor: '#ff0000',
-		        strokeWeight: 3
-		    });
-		} */
-		
+
 		
 
 		// 지도내 거리재기 또는 면적재기를 클릭하세요.
@@ -319,7 +307,12 @@
 
 		$('#confirm').on('click', function(e) {
 			
+			location = "suggestConfirm.do?seq=${dto.seq}"
+		});
+		
+		$('#delete').on('click', function(e) {
 			
+			location = "suggestDelete.do?seq=${dto.seq}";
 		});
 		
 

@@ -57,9 +57,8 @@ public class CourseController {
 		boolean result = dao.submitCourse(dto);
 		
 		return "course.tiles";
-		
-		
 	}
+	
 
 	// 국토종주인증센터?
 	@RequestMapping(value = "Certifi.do", method = RequestMethod.GET)
