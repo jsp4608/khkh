@@ -21,7 +21,7 @@
 
 <definition name="course.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-course.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/main2.jsp"/>
 </definition>
 
 
@@ -34,7 +34,7 @@
 
 <definition name="meet.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-meet.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/main2.jsp"/>
 </definition>
 
 <definition name="meetupdate.tiles" extends="meet.tiles">
@@ -171,6 +171,20 @@
 <definition name="jeju_Fantasy.tiles" extends="course.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/Course/jeju_Fantasy.jsp"/>
 </definition>
+
+<!-- login -->
+<definition name="login.tiles" template="/WEB-INF/views/layout-main.jsp">
+   <put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+   <put-attribute name="main" value="/WEB-INF/views/login/login1.jsp"/>
+   <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+</definition>
+
+<definition name="regi.tiles" template="/WEB-INF/views/layout-main.jsp">
+   <put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+   <put-attribute name="main" value="/WEB-INF/views/login/regi.jsp"/>
+   <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+</definition>
+
 
 
 
