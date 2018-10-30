@@ -97,6 +97,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/main/courseConfirmDetail.jsp"/>
 </definition>
 
+<definition name="memberCourse.tiles" extends="course.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/main/courseConfirmDetail.jsp"/>
+</definition>
+
 <!-- 국토종주란?   -->
 <definition name="Certifi.tiles" extends="course.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/Course/Certifi.jsp"/>

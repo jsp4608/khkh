@@ -84,6 +84,11 @@ h4{text-align: center;}
 		
 		
 		<li class="subtitle">동호회 자전거길</li>
+		<c:forEach items="${list }" var="course">
+		<li><a href="memberCourse.do?seq=${course.seq }">${course.title }</a></li>
+		</c:forEach>
+		
+		
 		<li><a href="courseSuggest.do">코스 추천하기</a></li>
 	</ul>
 </div>
