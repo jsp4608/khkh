@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="CycleMember">
+
+<insert id="addMember" parameterType="cycle.model.MemberDto">
+	INSERT INTO MEMBER(ID, PWD, NAME, EMAIL, IMG, AUTH)
+	VALUES(#{id}, #{pwd}, #{name}, #{email}, null, 3)
+</insert>
+
+<select id="login" parameterType="cycle.model.MemberDto"
+	resultType="cycle.model.MemberDto">
+	SELECT ID, NAME, EMAIL, AUTH, IMG
+	FROM MEMBER
+	WHERE ID=#{id} AND PWD=#{pwd}	
+</select>
+
+<select id="getID" parameterType="cycle.model.MemberDto"
+	resultType="java.lang.Integer">
+	SELECT NVL(COUNT(*), 0)
+	FROM MEMBER
+	WHERE ID=#{id}	
+</select>
+
+
+</mapper>

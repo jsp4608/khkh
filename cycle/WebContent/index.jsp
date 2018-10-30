@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<<<<<<< HEAD
-
-<head>
-=======
 <head> 
->>>>>>> origin/경훈
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -15,8 +9,9 @@
 
 
 <%
-response.sendRedirect("main.do");
+response.sendRedirect("login.do");
 %>
 
 </body>
 </html>
+
