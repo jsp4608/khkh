@@ -76,7 +76,7 @@
 <select id="isVote" parameterType="cycle.model.Voter" resultType="java.lang.Integer">	
 	SELECT COUNT(*)
 	FROM VOTER
-	WHERE POLLID=#{pollid} AND ID='aaa'
+	WHERE POLLID=#{pollid} AND ID=#{id}
 				<!-- 투표번호			User -->
 </select>
  		
@@ -84,7 +84,7 @@
 	INSERT INTO MEETPOLL
 	(POLLID, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG, ITEMCOUNT, POLLTOTAL)
 	VALUES
-	(MEET_SEQ.NEXTVAL, 'aaa', #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, ' ', #{itemcount}, 0)		
+	(MEET_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, ' ', #{itemcount}, 0)		
 </insert>
 
 <insert id="makePollSub" parameterType="cycle.model.PollSubDto">
@@ -200,7 +200,7 @@
 <!-- Voter -->
 <insert id="pollingVote" parameterType="cycle.model.Voter">
 	INSERT INTO VOTER(VOTERID, POLLID, POLLSUBID, ID, REGDATE)
-	VALUES(VOTER_SEQ.NEXTVAL, #{pollid}, #{pollsubid}, 'aaa', SYSDATE)
+	VALUES(VOTER_SEQ.NEXTVAL, #{pollid}, #{pollsubid}, #{id}, SYSDATE)
 </insert>
 
 <!-- PollSub -->
@@ -239,7 +239,7 @@
 	SET ACCOUNT = ACCOUNT-1
 	WHERE POLLSUBID=(SELECT POLLSUBID
 	FROM VOTER 
-	WHERE POLLID=#{pollid} AND ID='aaa')
+	WHERE POLLID=#{pollid} AND ID=#{id})
 </update>
 
 <update id="dcPolltotal" parameterType="cycle.model.MeetPollDto">
@@ -247,12 +247,12 @@
 	SET POLLTOTAL = POLLTOTAL-1
 	WHERE POLLID=(SELECT POLLID
 	FROM VOTER 
-	WHERE POLLID=#{pollid} AND ID='aaa')
+	WHERE POLLID=#{pollid} AND ID=#{id})
 </update>
 
 <delete id="deletePollCount" parameterType="cycle.model.Voter">
 	DELETE FROM VOTER
-	WHERE POLLID=#{pollid} AND ID='aaa'
+	WHERE POLLID=#{pollid} AND ID=#{id}
 </delete>
 
 <select id="getRepList" parameterType="cycle.model.ReplyDto" resultType="cycle.model.ReplyDto">
@@ -263,7 +263,7 @@
 
 <insert id="insertRep" parameterType="cycle.model.ReplyDto">
 	INSERT INTO REP 
-	VALUES(SEQ_REP.NEXTVAL, 'aaa', #{pollid}, 0, 0, 0, #{content}, SYSDATE, 0)
+	VALUES(SEQ_REP.NEXTVAL, #{id}, #{pollid}, 0, 0, 0, #{content}, SYSDATE, 0)
 </insert>
 
 </mapper>

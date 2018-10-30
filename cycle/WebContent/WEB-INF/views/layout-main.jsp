@@ -12,20 +12,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath() %>/css/layout-main.css">
-
 </head>
 <body>
-<div class="header-wrap">
+<div>
 	<tiles:insertAttribute name="header"/>
 </div>
 
-<div class="body-wrap">
+<div>
 	<tiles:insertAttribute name="main"/>
 </div>
 
-<div class="footer-wrap">
+<div>
 	<tiles:insertAttribute name="footer"/>
 </div>
 

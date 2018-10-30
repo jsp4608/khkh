@@ -49,7 +49,7 @@ int tday = cal.get(Calendar.DATE);
 	<tr>
 		<th>아이디</th>
 		<td style="text-align: left;">
-			<input type="text" name="id" readonly="readonly"  <%-- value='${login.id}' --%> size="60"/>
+			<input type="text" name="id" readonly="readonly" value='${login.id}'> size="60"/>
 		</td>
 	</tr>
 	<tr>
