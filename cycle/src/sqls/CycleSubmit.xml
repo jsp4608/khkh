@@ -15,10 +15,30 @@
 	ORDER BY SEQ
 </select>
 
+<select id="getMemberCourseList" resultType="cycle.model.CourseDto">
+	SELECT * FROM COURSE
+	ORDER BY SEQ
+</select>
+
 <select id="getCourseDetail" parameterType="java.lang.Integer" resultType="cycle.model.CourseDto">
 	SELECT * FROM COURSETEMP
 	WHERE SEQ=#{seq}
 </select>
+
+<select id="getMemberCourseDetail" parameterType="java.lang.Integer" resultType="cycle.model.CourseDto">
+	SELECT * FROM COURSE
+	WHERE SEQ=#{seq}
+</select>
+
+<select id="delCourseDetail" parameterType="java.lang.Integer" resultType="cycle.model.CourseDto">
+	DELETE FROM COURSETEMP
+	WHERE SEQ=#{seq}
+</select>
+
+<insert id="confirmCourse" parameterType="cycle.model.CourseDto">
+	INSERT INTO COURSE
+	VALUES(SEQ_COURSE.NEXTVAL, #{title}, 'temp', #{description}, #{len}, #{courseday}, #{mapdata})
+</insert>
 
 
 </mapper>  

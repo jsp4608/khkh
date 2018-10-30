@@ -21,7 +21,7 @@
 
 <definition name="course.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-course.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/Course/Certifi.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/main2.jsp"/>
 </definition>
 
 
@@ -34,7 +34,7 @@
 
 <definition name="meet.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-meet.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/meet/main.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/main2.jsp"/>
 </definition>
 
 <definition name="meetupdate.tiles" extends="meet.tiles">
@@ -66,16 +66,6 @@
 	<put-attribute name="main" value="/WEB-INF/views/common/main-pdslist.jsp"/>
 </definition>
 
-<definition name="pdsschedule.tiles" extends="basic.tiles">
-   <put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
-   <put-attribute name="main" value="/WEB-INF/views/common/cycleSchedule.jsp"/>
-</definition>
-
-<definition name="pdscertification.tiles" extends="basic.tiles">
-   <put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
-   <put-attribute name="main" value="/WEB-INF/views/common/certification.jsp"/>
-</definition>
-
 
 <!-- pds -->
 
@@ -104,6 +94,10 @@
 
 <definition name="adminCourse.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-admin.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/main/courseConfirmDetail.jsp"/>
+</definition>
+
+<definition name="memberCourse.tiles" extends="course.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/main/courseConfirmDetail.jsp"/>
 </definition>
 
@@ -180,16 +174,19 @@
 
 <!-- login -->
 <definition name="login.tiles" template="/WEB-INF/views/layout-main.jsp">
-	<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/login/login1.jsp"/>
-	<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+   <put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+   <put-attribute name="main" value="/WEB-INF/views/login/login1.jsp"/>
+   <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
 </definition>
 
 <definition name="regi.tiles" template="/WEB-INF/views/layout-main.jsp">
-	<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/login/regi.jsp"/>
-	<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+   <put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+   <put-attribute name="main" value="/WEB-INF/views/login/regi.jsp"/>
+   <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
 </definition>
+
+
+
 
 
 </tiles-definitions>

@@ -12,4 +12,11 @@ public interface CourseDao {
 	
 	public CourseDto getCouseDetail(int seq);
 
+	public void delete(int seq);
+	
+	public void confirm(CourseDto dto);
+	
+	public List<CourseDto> getMemberCourseList();
+
+	public CourseDto getMemberCouseDetail(int seq);
 }
