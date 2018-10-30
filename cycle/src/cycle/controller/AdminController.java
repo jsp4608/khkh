@@ -42,12 +42,7 @@ public class AdminController {
 		CourseDto dto = coursedao.getCouseDetail(seq);
 		
 		String[] arrone = dto.getMapdata().split("|");
-/*		String[][] arrtwo = new String[arrone.length][2];
-		
-		for(int i =0; i < arrone.length; i++) {
-			arrtwo[i] = arrone[i].split(",");
-		}*/
-		
+
 		model.addAttribute("dto", dto);
 		
 		System.out.println("coursedetail: " + dto.toString());
@@ -59,23 +54,29 @@ public class AdminController {
 	
 	
 	@RequestMapping(value="suggestConfirm.do")
-	public String suggestConfirm(@RequestParam("object") String obj) {
+	public String suggestConfirm(@RequestParam("seq") int seq) {
 		
+		System.out.println("Seq: "+ seq);
 		
+		CourseDto dto = coursedao.getCouseDetail(seq);
+		
+		coursedao.confirm(dto);
+		
+		coursedao.delete(seq);
 	
-		
-		return "admin.tiles";
+		return "redirect:admin.do";
 		
 		
 	}
 	
 	@RequestMapping(value="suggestDelete.do")
-	public String suggestDelete(@RequestParam("object") String obj) {
+	public String suggestDelete(@RequestParam("seq") int seq) {
 		
-		
+		System.out.println("Seq: "+ seq);
 	
+		coursedao.delete(seq);
 		
-		return "admin.tiles";
+		return "redirect:admin.do";
 		
 		
 	}

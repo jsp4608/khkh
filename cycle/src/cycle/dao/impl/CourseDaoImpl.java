@@ -37,4 +37,28 @@ public class CourseDaoImpl implements CourseDao {
 		return dto;
 	}
 
+	public void delete(int seq) {
+		sqlSession.selectOne(namespace + "delCourseDetail", seq);
+	}
+
+	@Override
+	public void confirm(CourseDto dto) {
+		sqlSession.insert(namespace + "confirmCourse", dto);				
+		
+	}
+
+	@Override
+	public List<CourseDto> getMemberCourseList() {
+		List<CourseDto> list = sqlSession.selectList(namespace + "getMemberCourseList");
+		return list;
+	}
+
+	@Override
+	public CourseDto getMemberCouseDetail(int seq) {
+		CourseDto dto = sqlSession.selectOne(namespace + "getMemberCourseDetail", seq);
+		return dto;
+	}
+	
+	
+
 }
