@@ -25,7 +25,6 @@
 </definition>
 
 
-
 <definition name="courseSuggest.tiles" extends="course.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/main/courseSuggest.jsp"/>
 </definition>
@@ -36,15 +35,6 @@
 <definition name="meet.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-meet.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/common/main.jsp"/>
-</definition>
-
-
-
-<!-- info -->
-
-<definition name="info.tiles" extends="basic.tiles">
-	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/common/main-pdslist.jsp"/>
 </definition>
 
 <definition name="meetupdate.tiles" extends="meet.tiles">
@@ -67,6 +57,17 @@
 	<put-attribute name="main" value="/WEB-INF/views/meet/meetpollresult.jsp"/>
 </definition>
 
+
+
+<!-- info -->
+
+<definition name="info.tiles" extends="basic.tiles">
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/main-pdslist.jsp"/>
+</definition>
+
+
+<!-- pds -->
 
 <definition name="pdswrite.tiles" extends="info.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/common/main-pdswrite.jsp"/>
