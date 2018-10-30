@@ -81,6 +81,7 @@ public class MemberController {
 							MultipartFile imgInp)
 						throws Exception{
 		logger.info("MainController regiAf" + new Date());
+		
 		System.out.println("original: " + imgInp.getOriginalFilename());
 		
 		// filename 취득

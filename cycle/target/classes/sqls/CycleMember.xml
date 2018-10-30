@@ -7,7 +7,7 @@
 
 <insert id="addMember" parameterType="cycle.model.MemberDto">
 	INSERT INTO MEMBER(ID, PWD, NAME, EMAIL, IMG, AUTH)
-	VALUES(#{id}, #{pwd}, #{name}, #{email}, null, 3)
+	VALUES(#{id}, #{pwd}, #{name}, #{email}, #{img}, 3)
 </insert>
 
 <select id="login" parameterType="cycle.model.MemberDto"

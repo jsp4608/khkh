@@ -103,8 +103,7 @@
 							src="https://user-images.githubusercontent.com/38531104/45137275-e0615300-b1e2-11e8-9dbb-05378ea956b6.png"
 							class="rounded-circle mr-3" height="50px" width="50px" alt="">
 						    
-						 <!--    <input type='file' id="imgInp" name="imgInp"> -->
-						    <input type="file" name="imgInp">
+						<input type='file' id="imgInp" name="imgInp">
 						    
 						    
 						    </div>
