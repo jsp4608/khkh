@@ -28,7 +28,7 @@ import cycle.model.PollBean;
 import cycle.model.PollSubDto;
 import cycle.model.ReplyDto;
 import cycle.model.Voter;
-import cycle.service.MeetService;
+import cycle.Service.MeetService;
 
 @Controller
 public class MeetController {
@@ -55,7 +55,7 @@ public class MeetController {
 		// String id = ((MemberDto)req.getSession().getAttribute("login")).getId();
 		// model.addAttribute("plists", meetDao.getMeetAllList(id));
 		
-		// paging 처리
+		// paging 泥섎━
 		int sn = param.getPageNumber();
 		int start = (sn) * param.getRecordCountPerPage() + 1;
 		int end = (sn+1) * param.getRecordCountPerPage();
@@ -73,7 +73,7 @@ public class MeetController {
 		param.setStart(start);
 		param.setEnd(end);
 		
-		// 글의 갯수
+		// 湲��쓽 媛��닔
 		int totalRecordCount = meetDao.getMeetCount(param);
 		List<MeetPollDto> meetlist = meetDao.getMeetPagingList(param);
 		
@@ -121,12 +121,12 @@ public class MeetController {
 		logger.info("MeetController meetpolldetail! " + new Date());
 		
 		MeetPollDto dto = meetDao.getMeet(meet);
-		model.addAttribute("meet", dto);	// 투표 문항
+		model.addAttribute("meet", dto);	// �닾�몴 臾명빆
 		
 		// System.out.println("MeetPollDto dto" + dto);
 		
 		List<PollSubDto> list = meetDao.getPollSubList(meet);
-		model.addAttribute("pollsublist", list); // 투표 보기들
+		model.addAttribute("pollsublist", list); // �닾�몴 蹂닿린�뱾
 		
 		List<ReplyDto> replylist = meetDao.getRepList(meet.getPollid());
 		model.addAttribute("replylist", replylist);
@@ -285,6 +285,14 @@ public class MeetController {
 		return "redirect:/meetpolldetail.do?pollid="+ref;
 	}
 	
+	@RequestMapping(value="repupdate.do", method = {RequestMethod.GET,	RequestMethod.POST})
+	public String updateRep(@RequestParam("seq") int seq,@RequestParam("ref") int ref,  Model model ) {
+		
+		logger.info("MeetController repupdate" + new Date());
+		
+		
+		return "redirect:/meetpolldetail.do?pollid="+ref;
+	}
 
 	
 	/*
@@ -293,7 +301,7 @@ public class MeetController {
 		
 		logger.info("MeetController meetlist" + new Date());
 
-		// paging 처리
+		// paging 泥섎━
 		int sn = param.getPageNumber();
 		int start = (sn) * param.getRecordCountPerPage() + 1;
 		int end = (sn+1) * param.getRecordCountPerPage();
@@ -311,7 +319,7 @@ public class MeetController {
 		param.setStart(start);
 		param.setEnd(end);
 		
-		// 글의 갯수
+		// 湲��쓽 媛��닔
 		int totalRecordCount = meetDao.getMeetCount(param);
 		// List<MeetDto> meetlist = meetDao.getMeetPagingList(param);
 		

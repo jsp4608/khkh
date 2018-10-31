@@ -258,7 +258,7 @@
 <select id="getRepList" parameterType="cycle.model.ReplyDto" resultType="cycle.model.ReplyDto">
 	SELECT * FROM REP 
 	WHERE REF=#{pollid} 
-	ORDER BY STEP ASC
+	ORDER BY WDATE desc
 </select>
 
 <insert id="insertRep" parameterType="cycle.model.ReplyDto">
@@ -271,7 +271,5 @@
 	SET DEL=1
 	WHERE SEQ=#{seq}
 </update>
-
-
 
 </mapper>

@@ -13,7 +13,7 @@
 <input type="hidden" name="pollid" value="${meet.pollid }"/>
 <%-- <input type="hidden" name="pollsubid" value="${pollsublist.pollsubid }"/> --%>
 <%-- <input type="hidden" name="id" value="${login.id }"/> --%>
-<input type="hidden" name="id" value="aaa"/>
+<input type="hidden" name="id" value="${login.id }"/>
 <colgroup>
 <col style="width: 200px"/>
 <col style="width: auto;"/>
@@ -60,12 +60,12 @@
 	<tr>
 		<td colspan="2" style="height: 50px; text-align: center;">
 		<span>
-			<%-- <c:if test="${meet.id eq login.id }"> --%>
-			<!-- <a href="meetupdate.do">모임수정</a> -->
-			<a href="#none" id="_btnUpdate">(로그인아이디가 같았을 시)모임수정</a>
-			<a href="#none" id="_btnDel">(로그인아이디가 같았을 시)모임삭제</a>			
+			<c:if test="${meet.id eq login.id }">
+			<!-- <a href="#none" id="_btnUpdate">(로그인아이디가 같았을 시)모임수정</a> -->
+			<!-- <a href="#none" id="_btnDel">(로그인아이디가 같았을 시)모임삭제</a> -->
+			<button type="button"  id="_btnUpdate">모임수정</button>
+			<button type="button"  id="_btnDel">모임삭제</button>
 			<%-- </c:if> --%>
-			<c:if test="${meet.id ne login.id }">
 			<!-- <a href="#none" id="_btnJoin">모임참가</a> -->
 			</c:if>
 		</span>
@@ -79,6 +79,7 @@
 <form action="polling.do" method="post">
 
 <input type="hidden" name="pollid" value="${meet.pollid }"/>
+<input type="hidden" name="id" value="${login.id }"/>
 
 <table>
 <colgroup>
@@ -174,12 +175,6 @@
 		<col width="150px">
 		<col width="770px">
 		<col width="100px">
-		<%-- <%
-			if (replysize != 0) {
-				for (int i = 0; i < replysize; i++) {
-					ReplyDto reply = replylist.get(i);
-					if (reply.getDel() == 0) {
-		%>  --%>
 		<c:if test="${replylist.size() != 0}">
 			<c:forEach var="i" items="${replylist}">
 			<input type="hidden" name="seq" value="${i.seq }">
@@ -196,19 +191,19 @@
 								<p style="margin-top: 10px; word-wrap: break-word;">${i.content }</p>
 			
 								<div style="text-align: right;">
+								<c:if test="${login.id eq i.id}">
 									<%-- <a href="#none" id="_RepDel" value="${i.seq }">(로그인아이디가 같았을 시)댓글삭제</a> --%>	
-									<button type="button" class="mainbut" onclick="changeReply(this)"
-										value="<%-- <%=reply.getSeq()%> <%=reply.getId()%> --%>">수정</button>
+									<%-- <button type="button" class="mainbut" onclick="changeReply(this)"
+										value="${i.seq }">수정</button> --%>
 									<button  type="button" value="${i.seq }" class="mainbut" onclick="delReply(this)">삭제</button>
-									<%-- <button class="mainbut" onclick="answerTable(this)"
-										value="<%=reply.getSeq()%>">답글</button> --%>
+								</c:if> 
 								</div>
 							</div>
 						</td>
 					</tr>
 					</c:if>
 					<c:if test="${i.del !=0}">
-						<tr>
+						<%-- <tr>
 							<td colspan="3">
 								<div
 									style="text-align: left; border: 1px solid #aaa; padding: 20px; margin: 20px">
@@ -223,7 +218,7 @@
 									</p>
 								</div>
 							</td>
-						</tr>
+						</tr> --%>
 					</c:if>
 			</c:forEach>
 		</c:if>
@@ -233,6 +228,7 @@
 
 <form name="frmForm" id="_frmForm" method="post" action="insertreply.do">
 	<input type="hidden" name="pollid" value="${meet.pollid }"/>
+	<input type="hidden" name="id" value="${login.id }"/>
 <div>
 	
 	<!--  작업중 -->
@@ -245,11 +241,11 @@
 							<div
 								style="text-align: left; border: 1px solid #aaa; padding: 20px; margin: 20px">
 								<!-- 아이디 -->
-								<span style="display: inline-block; font-weight: 700; margin-right: 5px;"><%-- <%=reply.getId()%> --%>id</span>
+								<span style="display: inline-block; font-weight: 700; margin-right: 5px;"><%-- <%=reply.getId()%> --%>${login.id }</span>
 								<!-- 날짜 -->
 								<hr style="border: none; border-bottom: 1px solid #aaa; width: 100%;">
-								<textarea rows="3" cols="120" style="margin-top: 10px; word-wrap: break-word;" name="content"></textarea>
-								<div style="text-align: right;">
+								<textarea rows="3" cols="130" style="margin-top: 10px; word-wrap: break-word;" name="content"></textarea>
+								<div style="text-align: right; margin-top: 13px">
 									<input type="submit" value="글쓰기">
 								</div>
 					</div>
@@ -265,6 +261,10 @@ function delReply(element){
 	alert(element.value);
 	location = "repdelete.do?seq="+element.value+"&ref="+${meet.pollid};
 }
+function changeReply(element){
+	alert(element.value);
+	location = "repupdate.do?seq="+element.value+"&ref="+${meet.pollid};
+}
 
 $("#_btnUpdate").click(function() {	
 	alert('모임수정');		
@@ -277,10 +277,6 @@ $("#_btnDel").click(function() {
 $("#_btnJoin").click(function() {	
 	alert('모임참가');
 	$("#_frmForm").attr({ "target":"_self", "action":"meetjoin.do" }).submit();
-});
-$("#_RepDel").click(function() {	
-	alert(this.value);
-	$("#_form").attr({ "target":"_self", "action":"repdelete.do" }).submit();
 });
 
 
