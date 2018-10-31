@@ -84,7 +84,7 @@
 	INSERT INTO MEETPOLL
 	(POLLID, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG, ITEMCOUNT, POLLTOTAL)
 	VALUES
-	(MEET_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, ' ', #{itemcount}, 0)		
+	(MEET_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, #{img}, #{itemcount}, 0)		
 </insert>
 
 <insert id="makePollSub" parameterType="cycle.model.PollSubDto">

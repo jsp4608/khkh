@@ -50,7 +50,15 @@
 	</tr>
 	<tr>
 		<th>이미지</th>
-		<td style="text-align: left;">${meet.img }</td>
+		<c:if test="${meet.img ne null }">
+		<td style="text-align: left;"><img id="" src="img/${meet.img }"  style="height: 200px; width: 200px"
+			class="img-fluid" alt="Responsive image"></td>
+		</c:if>
+		
+		<c:if test="${meet.img eq null }">
+		<td style="text-align: left;"><img id="" src="img/road-2562568"  style="height: 200px; width: 200px"
+			class="img-fluid" alt="Responsive image"></td>
+		</c:if>
 	</tr>
 	<tr>
 		<th>내용</th>

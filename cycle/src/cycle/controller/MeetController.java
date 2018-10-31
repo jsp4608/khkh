@@ -2,6 +2,8 @@ package cycle.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 
@@ -105,11 +109,43 @@ public class MeetController {
 	}
 	
 	@RequestMapping(value="makemeetAf.do", method={RequestMethod.GET, RequestMethod.POST})
-	public String makemeetAf(PollBean pbean) {
+	public String makemeetAf(PollBean pbean,
+			HttpServletRequest req,
+			@RequestParam(value="uploadImg", required=false)
+			MultipartFile uploadImg) {
 		logger.info("KhPollConroller makemeetAf! " + new Date());
 		
-		meetService.makeMeet(pbean);
+		// filename 취득
+		pbean.setImg(uploadImg.getOriginalFilename());
 		
+		
+		// upload 경로
+		
+	//	String fupload = "c:\\tmp";
+	//	String fupload = req.getServletContext().getRealPath("/upload");
+		String fupload = "C:\\Users\\sp\\Desktop\\finalfinalfinal\\cycle\\WebContent\\img";
+		System.out.println("파일 경로:" + fupload);
+		
+		String f = pbean.getImg();
+		String newFile = FUpUtil.getNewjpg(f);
+		
+		pbean.setImg(newFile);
+		logger.info("변경된 파일명:" + newFile);
+	
+		try {
+			
+			File file = new File(fupload + "/" + newFile);		
+			System.out.println("경로와 파일명:" + fupload + "/" + newFile);
+			
+			//실제로 업로드 되는 부분		
+			FileUtils.writeByteArrayToFile(file, uploadImg.getBytes());
+			
+			// DB 저장
+			meetService.makeMeet(pbean);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("pbean : " + pbean);
 		
 		return "redirect:/meetpolllist.do";
