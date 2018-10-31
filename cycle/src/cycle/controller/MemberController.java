@@ -93,7 +93,7 @@ public class MemberController {
 		System.out.println("파일 경로:" + fupload);
 		
 		String f = mem.getImg();
-		String newFile = FUpUtil.getNewFile(f);
+		String newFile = FUpUtil.getNewjpg(f);
 		
 		
 		mem.setImg(newFile);

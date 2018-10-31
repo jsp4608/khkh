@@ -11,86 +11,87 @@
 <title></title>
 </head>
 <body>
+<img src="img/road-2562568.jpg" class="img-fluid" alt="Responsive image">
 
  <!--Carousel Wrapper-->
-  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+ <!--  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
 
-    <!--Indicators-->
+    Indicators
     <ol class="carousel-indicators">
       <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
       <li data-target="#carousel-example-1z" data-slide-to="1"></li>
       <li data-target="#carousel-example-1z" data-slide-to="2"></li>
     </ol>
-    <!--/.Indicators-->
+    /.Indicators
 
-    <!--Slides-->
+    Slides
     <div class="carousel-inner" role="listbox">
 
-      <!--First slide-->
+      First slide
       <div class="carousel-item active">
         <div class="view">
 
-          <!--Video source-->
+          Video source
           <video class="video-intro" autoplay loop muted>
             <source src="https://mdbootstrap.com/img/video/city.mp4" type="video/mp4" >
           </video>
 
-          <!-- Mask & flexbox options-->
+          Mask & flexbox options
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
            
 
           </div>
-          <!-- Mask & flexbox options-->
+          Mask & flexbox options
 
         </div>
       </div>
-      <!--/First slide-->
+      /First slide
 
-      <!--Second slide-->
+      Second slide
       <div class="carousel-item">
         <div class="view">
 
-          <!--Video source-->
+          Video source
           <video class="video-intro" autoplay loop muted>
               <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4">
           </video>
 
-          <!-- Mask & flexbox options-->
+          Mask & flexbox options
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
 
           </div>
-          <!-- Mask & flexbox options-->
+          Mask & flexbox options
 
         </div>
       </div>
-      <!--/Second slide-->
+      /Second slide
 
-      <!--Third slide-->
+      Third slide
       <div class="carousel-item">
         <div class="view">
 
-          <!--Video source-->
+          Video source
           <video class="video-intro" autoplay loop muted>
               <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4">
           </video>
 
-          <!-- Mask & flexbox options-->
+          Mask & flexbox options
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
            
           </div>
-          <!-- Mask & flexbox options-->
+          Mask & flexbox options
 
         </div>
       </div>
-      <!--/Third slide-->
+      /Third slide
 
     </div>
-    <!--/.Slides-->
+    /.Slides
 
-    <!--Controls-->
+    Controls
     <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -99,9 +100,9 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-    <!--/.Controls-->
+    /.Controls
 
-  </div>
+  </div> -->
   <!--/.Carousel Wrapper-->
   
 
@@ -133,6 +134,7 @@
 		<br><br> -->
   </div>
 </div>
+
 
 <script src="js/main.js"></script>
 

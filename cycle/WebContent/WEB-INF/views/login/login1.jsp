@@ -82,7 +82,7 @@
 
   </div>
   <!--/.Carousel Wrapper-->
-  <form action="regiAf.do" method="post" id="regFrm" name="regFrm" >
+  <form action="regiAf.do" method="post" id="regFrm" name="regFrm" enctype="multipart/form-data">
 		  <!-- 회원가입 모달 -->
 		  <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog" role="document">

@@ -56,17 +56,41 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="course.do">코스</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="meet.do">모임</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pdslist.do">정보</a>
-          </li>
+          
+          <c:choose>
+          <c:when test="${(empty login) or (login.id eq '') }">
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" id="not">코스</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">모임</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">정보</a>
+	          </li>
+	          <li class="nav-item">
+	           	 <a class="nav-link" href="login.do">로그인</a>
+	          </li>
+		  </c:when>
 		  
-		  <c:choose>
+		  <c:otherwise>
+			  <li class="nav-item">
+	          	<a class="nav-link" href="course.do">코스</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="meet.do">모임</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="pdslist.do">정보</a>
+	          </li>
+	          <li class="nav-item">
+	           	 <a class="nav-link" href="logout.do">로그아웃</a>
+	          </li>
+		 	</c:otherwise>
+		  </c:choose>
+		  
+		  
+		  <%-- <c:choose>
 		 	<c:when test="${(empty login) or (login.id eq '') }">
 			 	<li class="nav-item">
 	           	 <a class="nav-link" href="login.do">로그인</a>
@@ -78,7 +102,7 @@
 	           	 <a class="nav-link" href="logout.do">로그아웃</a>
 	          	</li>
 		 	</c:otherwise>
-		  </c:choose>
+		  </c:choose> --%>
 		  
 		  <li class="nav-item">
 		  	<a href="admin.do" style="position: absolute; right:20px">관리자</a>
