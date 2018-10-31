@@ -168,6 +168,8 @@
 
 <div>
 	<!--  작업중 -->
+	<form action="frmForm" id="_form" method="post">
+	
 	<table class="table table-bordered" style="width: 1020px" align="center" id="replysection">
 		<col width="150px">
 		<col width="770px">
@@ -178,32 +180,33 @@
 					ReplyDto reply = replylist.get(i);
 					if (reply.getDel() == 0) {
 		%>  --%>
-		<c:if test="${replylist.size() == 0}">
-			<%-- <c:forEach var="i" items="${replylist}">
-				<c:if test="${i.del == 0}"> --%>
+		<c:if test="${replylist.size() != 0}">
+			<c:forEach var="i" items="${replylist}">
+			<input type="hidden" name="seq" value="${i.seq }">
+				<c:if test="${i.del == 0}">
 					<tr>
 						<td colspan="3">
 							<div
 								style="text-align: left; border: 1px solid #aaa; padding: 20px; margin: 20px">
 								<!-- 아이디 -->
-								<span style="display: inline-block; font-weight: 700; margin-right: 5px;"><%-- <%=reply.getId()%> --%>id</span>
+								<span style="display: inline-block; font-weight: 700; margin-right: 5px;">${i.id }</span>
 								<!-- 날짜 -->
-								<span style="display: inline-block; font-size: 12px; color: #555"><%-- <%=reply.getWdate()%> --%>wd</span>
+								<span style="display: inline-block; font-size: 12px; color: #555">${i.wdate }</span>
 								<hr style="border: none; border-bottom: 1px solid #aaa; width: 100%;">
-								<p style="margin-top: 10px; word-wrap: break-word;"><%-- <%=arrow(reply.getDepth())%><%=reply.getContent()%> --%>co</p>
+								<p style="margin-top: 10px; word-wrap: break-word;">${i.content }</p>
 			
 								<div style="text-align: right;">
-									<button class="mainbut" onclick="changeReply(this)"
+									<%-- <a href="#none" id="_RepDel" value="${i.seq }">(로그인아이디가 같았을 시)댓글삭제</a> --%>	
+									<button type="button" class="mainbut" onclick="changeReply(this)"
 										value="<%-- <%=reply.getSeq()%> <%=reply.getId()%> --%>">수정</button>
-									<button class="mainbut" onclick="delReply(this)"
-										value="<%-- <%=reply.getSeq()%> <%=reply.getId()%> --%>">삭제</button>
-									<button class="mainbut" onclick="answerTable(this)"
-										value="<%-- <%=reply.getSeq()%> --%>">답글</button>
+									<button  type="button" value="${i.seq }" class="mainbut" onclick="delReply(this)">삭제</button>
+									<%-- <button class="mainbut" onclick="answerTable(this)"
+										value="<%=reply.getSeq()%>">답글</button> --%>
 								</div>
 							</div>
 						</td>
 					</tr>
-					<%-- </c:if> --%>
+					</c:if>
 					<c:if test="${i.del !=0}">
 						<tr>
 							<td colspan="3">
@@ -211,22 +214,23 @@
 									style="text-align: left; border: 1px solid #aaa; padding: 20px; margin: 20px">
 									<!-- 아이디 -->
 									<span
-										style="display: inline-block; font-weight: 700; margin-right: 5px;">-</span>
+										style="display: inline-block; font-weight: 700; margin-right: 5px;">${i.id }</span>
 									<!-- 날짜 -->
-									<span style="display: inline-block; font-size: 12px; color: #555"><%-- <%=reply.getWdate()%> --%>wd</span>
+									<span style="display: inline-block; font-size: 12px; color: #555">${i.wdate }</span>
 									<hr
 										style="border: none; border-bottom: 1px solid #aaa; width: 100%;">
-									<p style="margin-top: 10px; word-wrap: break-word;"><%-- <%=arrow(reply.getDepth())%> --%>이
-										글은 삭제된 글입니다.
+									<p style="margin-top: 10px; word-wrap: break-word;">이 글은 삭제된 글입니다.
 									</p>
 								</div>
 							</td>
 						</tr>
 					</c:if>
-			<%-- </c:forEach> --%>
+			</c:forEach>
 		</c:if>
 	</table>
+	</form>
 </div>
+
 <form name="frmForm" id="_frmForm" method="post" action="insertreply.do">
 	<input type="hidden" name="pollid" value="${meet.pollid }"/>
 <div>
@@ -257,6 +261,11 @@
 
 
 <script type="text/javascript">
+function delReply(element){
+	alert(element.value);
+	location = "repdelete.do?seq="+element.value+"&ref="+${meet.pollid};
+}
+
 $("#_btnUpdate").click(function() {	
 	alert('모임수정');		
 	$("#_frmForm").attr({ "target":"_self", "action":"meetpollupdate.do" }).submit();
@@ -269,6 +278,11 @@ $("#_btnJoin").click(function() {
 	alert('모임참가');
 	$("#_frmForm").attr({ "target":"_self", "action":"meetjoin.do" }).submit();
 });
+$("#_RepDel").click(function() {	
+	alert(this.value);
+	$("#_form").attr({ "target":"_self", "action":"repdelete.do" }).submit();
+});
+
 
 
 </script>

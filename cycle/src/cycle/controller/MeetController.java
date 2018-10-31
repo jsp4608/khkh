@@ -131,6 +131,10 @@ public class MeetController {
 		List<ReplyDto> replylist = meetDao.getRepList(meet.getPollid());
 		model.addAttribute("replylist", replylist);
 		
+		for (int i = 0; i < replylist.size(); i++) {
+			System.out.println("replylist : " + replylist.get(i).toString());
+		}
+		
 		int count = meetDao.isVote(new Voter(dto.getPollid(), -1, dto.getId()));
 		
 		if(count > 0) {
@@ -270,6 +274,18 @@ public class MeetController {
 		
 		return "redirect:/meetpolldetail.do?pollid="+rep.getPollid();
 	}
+	
+	@RequestMapping(value="repdelete.do", method = {RequestMethod.GET,	RequestMethod.POST})
+	public String deleteRep(@RequestParam("seq") int seq,@RequestParam("ref") int ref,  Model model ) {
+		
+		logger.info("MeetController repdelete" + new Date());
+		
+		meetDao.deleteRep(seq);
+		
+		return "redirect:/meetpolldetail.do?pollid="+ref;
+	}
+	
+
 	
 	/*
 	@RequestMapping(value="meetlist.do", method = {RequestMethod.GET,	RequestMethod.POST})

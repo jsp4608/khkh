@@ -63,4 +63,5 @@ public interface MeetDao {
 	void pollingSub(Voter voter);
 	void pollingPoll(Voter voter);
 	
+	void deleteRep(int seq);
 }

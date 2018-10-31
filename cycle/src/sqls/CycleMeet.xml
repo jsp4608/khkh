@@ -266,4 +266,12 @@
 	VALUES(SEQ_REP.NEXTVAL, 'aaa', #{pollid}, 0, 0, 0, #{content}, SYSDATE, 0)
 </insert>
 
+<update id="deleteRep" parameterType="java.lang.Integer">
+	UPDATE REP 
+	SET DEL=1
+	WHERE SEQ=#{seq}
+</update>
+
+
+
 </mapper>
