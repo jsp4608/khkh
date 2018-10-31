@@ -17,10 +17,10 @@
 	<h2>코스 추천하기</h2>
 	
 	<form>
-	코스 이름: <input type="text" id="title" required> <br> <br> 코스 설명:
-		<textarea id="desc" required></textarea>
-
-		<br> 코스 소요 시간: <input type="number" id="day" required> 일 <br> <br>
+	내 아이디: ${login.id } <br> <br> 
+	코스 이름: <input type="text" id="title" required> <br> <br> 
+	코스 설명: <textarea id="desc" required></textarea> <br><br>
+	 코스 소요 시간: <input type="number" id="day" required> 일 <br> <br>
 	</form>
 
 	<div id="map" style="width: 70%; height: 600px"></div>
@@ -455,7 +455,7 @@
 				var desc = $('#desc').val();
 				var length = distance;
 				var day = $('#day').val();
-				
+				var memid = '${login.id}';
 				
 				if(title == null || title.trim() == ""|| desc == null || desc.trim() == ""|| day == null || day ==""){
 					alert("코스 제목, 정보, 소요시간을 모두 입력해 주세요");
@@ -475,8 +475,8 @@
 						"description" :  desc,
 						"len" : length,
 						"courseday" : day,
-						"mapdata": string
-						
+						"mapdata": string,
+						"memid" : memid
 				}; 
 				
 				 var str = JSON.stringify(obj); 

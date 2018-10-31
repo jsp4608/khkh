@@ -185,6 +185,16 @@
    <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
 </definition>
 
+<definition name="pdsschedule.tiles" extends="basic.tiles">
+   <put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
+   <put-attribute name="main" value="/WEB-INF/views/common/cycleSchedule.jsp"/>
+</definition>
+
+<definition name="pdscertification.tiles" extends="basic.tiles">
+   <put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
+   <put-attribute name="main" value="/WEB-INF/views/common/certification.jsp"/>
+</definition>
+
 
 
 

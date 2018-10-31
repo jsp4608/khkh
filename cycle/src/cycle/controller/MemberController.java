@@ -55,6 +55,8 @@ public class MemberController {
 		// login을 DB 확인
 		login = memberDao.login(mem);
 		
+		System.out.println("login: " +mem);
+		
 		if(login != null && !login.getId().equals("")) {
 			session.setAttribute("login", login);
 			return "redirect:/main.do";			
@@ -115,14 +117,6 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
-		/*boolean b = memberDao.addMember(mem);
-		
-		if(b) {
-			return "login.tiles";
-		}else {
-			return "login.tiles";
-		}	*/
 		
 		return "login.tiles";
 	}
