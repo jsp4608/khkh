@@ -69,6 +69,16 @@
 
 <!-- pds -->
 
+<definition name="pdsschedule.tiles" extends="basic.tiles">
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/cycleSchedule.jsp"/>
+</definition>
+
+<definition name="pdscertification.tiles" extends="basic.tiles">
+	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/common/certification.jsp"/>
+</definition>
+
 <definition name="pdswrite.tiles" extends="info.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/common/main-pdswrite.jsp"/>
 </definition>
