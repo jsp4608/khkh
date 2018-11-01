@@ -21,7 +21,7 @@
 
 <definition name="course.tiles" extends="basic.tiles">
 	<put-attribute name="left-menu" value="/WEB-INF/views/left/left-course.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/common/main2.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/Course/Certifi.jsp"/>
 </definition>
 
 
@@ -195,7 +195,21 @@
    <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
 </definition>
 
+<definition name="mypage.tiles" template="/WEB-INF/views/layout-main.jsp">
+   <put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+   <put-attribute name="main" value="/WEB-INF/views/login/mypage.jsp"/>
+   <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+</definition>
 
+<definition name="pdsschedule.tiles" extends="basic.tiles">
+   <put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
+   <put-attribute name="main" value="/WEB-INF/views/common/cycleSchedule.jsp"/>
+</definition>
+
+<definition name="pdscertification.tiles" extends="basic.tiles">
+   <put-attribute name="left-menu" value="/WEB-INF/views/left/left-info.jsp"/>
+   <put-attribute name="main" value="/WEB-INF/views/common/certification.jsp"/>
+</definition>
 
 
 

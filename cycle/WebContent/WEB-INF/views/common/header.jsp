@@ -104,11 +104,11 @@
 		 	</c:otherwise>
 		  </c:choose> --%>
 		  
+		  <c:if test="${login.auth == 1}">
 		  <li class="nav-item">
 		  	<a href="admin.do" style="position: absolute; right:20px">관리자</a>
-		  	
           </li>
-		  
+		  </c:if>
         </ul>
 
       </div>
