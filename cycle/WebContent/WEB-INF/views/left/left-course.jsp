@@ -4,79 +4,65 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<fmt:requestEncoding value="utf-8" />
 
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-h4 {
-	text-align: center;
-}
-</style>
-<!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="css/simple-sidebar.css" rel="stylesheet">
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
 <div id="wrapper">
 
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper"  >
 
 
 		<ul class="sidebar-nav">
+		
+		<br>
+		<br>
+		<br>
 			<li class="sidebar-brand"><a disabled>국토종주길</a></li>
 			<li><a onclick="url_Certifi()" title="국토종주">국토종주란?</a></li>
 
-			<li style="list-style: decimal-leading-zero;" class="Araba"><a
+			<li  class="Araba"><a
 				href="#none" onclick="url_Araba()" title="아라뱃길">아라뱃길</a></li>
 
-			<li style="list-style: decimal-leading-zero;" class="Araba"><a
+			<li  class="Araba"><a
 				href="#none" onclick="url_Han()" title="한강">한강(서울)길</a></li>
 
-			<li style="list-style: decimal-leading-zero;" class="NorthHan">
+			<li  class="NorthHan">
 				<a href="#none" onclick="url_NorthHan()" title="남한">남한강길</a>
 			</li>
 
-			<li style="list-style: decimal-leading-zero;" class="Northbug">
+			<li  class="Northbug">
 				<a href="#none" onclick="url_Northbug()" title="북한">북한강길</a>
 			</li>
 
-			<li style="list-style: decimal-leading-zero;" class="Thenew"><a
+			<li class="Thenew"><a
 				href="#none" onclick="url_Thenew()" title="새재">새재자전거길</a></li>
 
-			<li style="list-style: decimal-leading-zero;" class="Nakdon"><a
+			<li  class="Nakdon"><a
 				href="#none" onclick="url_Nakdon()" title="낙동강">낙동강자전거길</a></li>
 
-			<li style="list-style: decimal-leading-zero;" class="Geumgang">
+			<li  class="Geumgang">
 				<a href="#none" onclick="url_Geumgang()" title="금강">금강자전거길</a>
 			</li>
 
-			<li style="list-style: decimal-leading-zero;" class="Yeongsan">
+			<li  class="Yeongsan">
 				<a href="#none" onclick="url_Yeongsan()" title="연산강">연산강자전거길</a>
 			</li>
 
-			<li style="list-style: decimal-leading-zero;" class="Seomjin"><a
+			<li class="Seomjin"><a
 				href="#none" onclick="url_Seomjin()" title="섬진강">섬진강자전거길</a></li>
 
-			<li style="list-style: decimal-leading-zero;" class="ocheon"><a
+			<li  class="ocheon"><a
 				href="#none" onclick="url_ocheon()" title="오천길">오천자전거길</a></li>
 
-			<li style="list-style: decimal-leading-zero;"
+			<li 
 				class="EastCoast_Gangwon"><a href="#none"
 				onclick="url_EastCoast_Gangwon()" title="동해안(강원)">동해안(강원)길</a></li>
 
-			<li style="list-style: decimal-leading-zero;"
+			<li 
 				class="EastCoast_Kyungbuk"><a href="#none"
 				onclick="url_EastCoast_Kyungbuk()" title="동해안(경북)">동해안(경북)길</a></li>
 
-			<li style="list-style: decimal-leading-zero;" class="jeju_Fantasy">
+			<li  class="jeju_Fantasy">
 				<a href="#none" onclick="url_jeju_Fantasy()" title="제주도">제주도길</a>
 			</li>
 
@@ -92,6 +78,10 @@ h4 {
 
 
 			<li><a href="courseSuggest.do">코스 추천하기</a></li>
+			<br>
+			<br>
+			<br>
+			
 		</ul>
 
 </div>
@@ -155,15 +145,6 @@ h4 {
 			location.href = "jeju_Fantasy.do";
 		}
 	</script>
-
-
-
-
-
-</body>
-</html>
-
-
 
 
 

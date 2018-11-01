@@ -21,7 +21,13 @@ if(Oflist != null){
 	plists = (List<MeetPollDto>)Oflist;
 }
 %>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>fucking</title>
+</head>
+<body>
 <script type="text/javascript">
 var str='<%=category %>';
 $(document).ready(function(){	
@@ -184,3 +190,9 @@ function goPage(pageNumber) {
 	$("#_frmFormSearch").attr("target","_self").attr("action","meetpolllist.do").submit();
 }
 </script>
+
+
+
+
+</body>
+</html>

@@ -3,37 +3,47 @@
 	padding: 20px;
 	position: absolute;
 }
-
-/* .full-wrap{
-	display: flex;
-	height: 100%;
-
-} */
-
 .left-wrap{
-	width: 200px;
+	padding-right: 30px;
+	padding-left:0px;
+	height: 100%;
 	background-color: #000;
-
- 	/*height: 100%;  */
-	
+	position: fixed;
 	display: block;
-	overflow: auto;
+	float: left;
+	overflow-y:scroll; 
+
 }
 
 .body-wrap{
-	
-	padding: 20px;
-	width: 100%;
-	 positon: absolute;
-	/*height: 100%; */
-	
+	padding-top: 90px;
+	float: right;
+	width: 80%;
 	display: block;
 	overflow: auto;
-/* 	border: 1px solid black;*/
 }
 
 .footer-wrap{
 	clear: both;
 	padding: 20px;
 	border: 1px solid black;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }

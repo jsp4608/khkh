@@ -21,6 +21,11 @@
 <link href="resources/bootstarp/css/mdb.min.css" rel="stylesheet">
 <!-- Your custom styles (optional) -->
 <link href="resources/bootstarp/css/style.min.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
 <style type="text/css">
 html, body, header, .carousel {
 	height: 100%;
