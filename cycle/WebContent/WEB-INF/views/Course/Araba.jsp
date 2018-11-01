@@ -70,7 +70,7 @@ h2.double:after {
     margin: 0 auto; /* this centers the line to the full width specified */
     position: absolute;
     top: 105%; left: 0; right: 0;
-    width: 95%;
+    width: 100%;
     z-index: -1;
 }
 
@@ -117,7 +117,7 @@ h2.no-span {
 } 
 
 .font{
-    font-family: cursive;
+    font-family: monospace;
     text-shadow: 2px 2px 5px slategrey;
     text-transform: monospace;
 

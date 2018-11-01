@@ -26,7 +26,7 @@
 			<tiles:insertAttribute name="left-menu" />
 		</div>
 
-		<div class="body-wrap" style="height: 300%; background: #f3f6f7">
+		<div class="body-wrap" style="height:130%;">
 			<tiles:insertAttribute name="main" />
 			
 		</div>
