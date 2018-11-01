@@ -26,7 +26,7 @@
 
 
 <definition name="courseSuggest.tiles" extends="course.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/main/courseSuggest.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/main/coursetitle.jsp"/>
 </definition>
 
 <!-- meet -->

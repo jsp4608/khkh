@@ -35,7 +35,7 @@
   </div>
 </div>
 
-
+<form>
 <div class="wrap">
   <div class="mat-div">
     <label for="first-name" class="mat-label">코스이름</label>
@@ -52,7 +52,13 @@
     <input type="number" class="mat-input" id="address" required>
   </div>
 </div>
+</form>
 
+<form action="courseSuggestAF.do" id="courseform" method="post">
+	
+		<input type="hidden" name="object" id="obj" >
+		
+	</form>
 
 <br><br><br><br><br>
 
@@ -556,10 +562,11 @@ printClock();
 				return;
 			}else{
 				
-				var title = $('#title').val();
-				var desc = $('#desc').val();
+				var title = $('#first-name').val();
+				var desc = $('#last-name').val();
 				var length = distance;
-				var day = $('#day').val();
+				var day = $('#address').val();
+				var memid = '${login.id}';
 				
 				
 				if(title == null || title.trim() == ""|| desc == null || desc.trim() == ""|| day == null || day ==""){
@@ -580,7 +587,8 @@ printClock();
 						"description" :  desc,
 						"len" : length,
 						"courseday" : day,
-						"mapdata": string
+						"mapdata": string,
+						"memid": memid
 						
 				}; 
 				

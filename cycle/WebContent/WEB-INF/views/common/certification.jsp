@@ -11,7 +11,7 @@
 <style type="text/css">
 
 .pds-table {
-    width: 100%;
+
     margin: 0.7em 0 0 0;
     
     border-top: 10px solid silver;
