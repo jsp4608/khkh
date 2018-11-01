@@ -116,14 +116,6 @@ public class MemberController {
 			e.printStackTrace();
 		}
 				
-		/*boolean b = memberDao.addMember(mem);
-		
-		if(b) {
-			return "login.tiles";
-		}else {
-			return "login.tiles";
-		}	*/
-		
 		return "login.tiles";
 	}
 	
@@ -149,6 +141,13 @@ public class MemberController {
 		logger.info("Welcome logout");		
 		session.invalidate();			
 		return "login.tiles";		
+	}
+	
+	@RequestMapping(value="mypage.do", 
+			method=RequestMethod.GET)
+	public String mypage(MemberDto mem,Model model){
+		logger.info("mypage " + new Date());		
+		return "mypage.tiles";		
 	}
 	
 	

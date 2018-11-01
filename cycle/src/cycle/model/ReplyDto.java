@@ -2,6 +2,7 @@ package cycle.model;
 
 public class ReplyDto {
 	
+	private int seq;
 	private int pollid;
 	private String id;
 	
@@ -17,6 +18,32 @@ public class ReplyDto {
 	public ReplyDto() {
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "ReplyDto [seq=" + seq + ", pollid=" + pollid + ", id=" + id + ", ref=" + ref + ", step=" + step
+				+ ", depth=" + depth + ", parent=" + parent + ", content=" + content + ", wdate=" + wdate + ", del="
+				+ del + "]";
+	}
+
+
+
+	public ReplyDto(int seq, int pollid, String id, int ref, int step, int depth, int parent, String content,
+			String wdate, int del) {
+		super();
+		this.seq = seq;
+		this.pollid = pollid;
+		this.id = id;
+		this.ref = ref;
+		this.step = step;
+		this.depth = depth;
+		this.parent = parent;
+		this.content = content;
+		this.wdate = wdate;
+		this.del = del;
+	}
+
 	public ReplyDto(int pollid, String id, int ref, int step, int depth, int parent, String content, String wdate,
 			int del) {
 		super();
@@ -40,7 +67,12 @@ public class ReplyDto {
 		this.content = content;
 	}
 
-
+	public int getSeq() {
+		return seq;
+	}
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 	public int getPollid() {
 		return pollid;
 	}

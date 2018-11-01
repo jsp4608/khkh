@@ -84,7 +84,7 @@
 	INSERT INTO MEETPOLL
 	(POLLID, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG, ITEMCOUNT, POLLTOTAL)
 	VALUES
-	(MEET_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, ' ', #{itemcount}, 0)		
+	(MEET_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, #{sdate}, #{edate}, 1, 0, #{location}, #{img}, #{itemcount}, 0)		
 </insert>
 
 <insert id="makePollSub" parameterType="cycle.model.PollSubDto">
@@ -258,12 +258,18 @@
 <select id="getRepList" parameterType="cycle.model.ReplyDto" resultType="cycle.model.ReplyDto">
 	SELECT * FROM REP 
 	WHERE REF=#{pollid} 
-	ORDER BY STEP ASC
+	ORDER BY WDATE desc
 </select>
 
 <insert id="insertRep" parameterType="cycle.model.ReplyDto">
 	INSERT INTO REP 
 	VALUES(SEQ_REP.NEXTVAL, #{id}, #{pollid}, 0, 0, 0, #{content}, SYSDATE, 0)
 </insert>
+
+<update id="deleteRep" parameterType="java.lang.Integer">
+	UPDATE REP 
+	SET DEL=1
+	WHERE SEQ=#{seq}
+</update>
 
 </mapper>

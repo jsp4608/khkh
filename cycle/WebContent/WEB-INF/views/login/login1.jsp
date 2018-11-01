@@ -43,16 +43,16 @@
 			    <!-- Password -->
 			    <input type="password" id="_userpwd" name="pwd" class="form-control mb-4" placeholder="Password" required data-msg="패스워드를 ">
 			
-			    <div class="d-flex justify-content-around">
+			    <!-- <div class="d-flex justify-content-around">
 			        <div>
-			            <!-- Remember me -->
+			            Remember me
 			            <div class="custom-control custom-checkbox">
 			                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
 			                <label class="custom-control-label" for="defaultLoginFormRemember">아이디 저장</label>
 			            </div>
 			        </div>
 			       
-			    </div>
+			    </div> -->
 
 		    <!-- Sign in button -->
 		    	<button class="btn btn-info btn-block my-4" type="button" id="_btnLogin">login</button>

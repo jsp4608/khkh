@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -104,26 +104,30 @@
 
   </div> -->
   <!--/.Carousel Wrapper-->
-  
+	<c:if test="${login.id != null}">
+		<div id="content">
+			<span id="icon-music">♬</span>
 
-<div id="content">
-	<span id="icon-music">♬</span>
+			<div class="wrap">
+				<p>
+					음성인식<br>
+				</p>
 
-  <div class="wrap">
-    <p>
-			음성인식<br>
-		</p>
-    
-    
-    <div id="result" >
-      <span class="final" id="final_span"></span>
-      <span class="interim" id="interim_span"></span>
-    </div>
-    <button id="btn-mic" class="off">마이크 <span></span></button>
-    <button id="btn-tts">Text to speech</button>
-    <audio id="audio" src="audio/ending.mp3"></audio>
-    
- <!--    <br><br>
+
+				<div id="result">
+
+
+
+					<span class="final" id="final_span"></span> <span class="interim"
+						id="interim_span"></span>
+				</div>
+				<button id="btn-mic" class="off">
+					마이크 <span></span>
+				</button>
+				<button id="btn-tts">Text to speech</button>
+				<audio id="audio" src="audio/ending.mp3"></audio>
+
+				<!--    <br><br>
 		<div>
 		  <button onclick="document.getElementById('audio').play()">버스커버스커</button>
 		  <button onclick="document.getElementById('audio').pause()">음악중지</button>
@@ -132,8 +136,10 @@
 		</div>
 		
 		<br><br> -->
-  </div>
-</div>
+			</div>
+		</div>
+	</c:if>
+
 
 
 <script src="js/main.js"></script>

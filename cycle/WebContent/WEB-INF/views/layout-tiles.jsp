@@ -27,6 +27,7 @@
 		</div>
 
 		<div class="body-wrap" style="height:130%;">
+		<div class="body-wrap" style="height: 210%; background: #f3f6f7">
 			<tiles:insertAttribute name="main" />
 			
 		</div>

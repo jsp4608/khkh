@@ -126,6 +126,8 @@ public class MeetDaoImpl implements MeetDao {
 
 	@Override
 	public void increaseMemcnt(int seq) {	
+		
+		System.out.println("delete seq: " +seq);
 		sqlSession.update(namespace + "increaseMemcnt", seq);
 	}
 
@@ -158,6 +160,11 @@ public class MeetDaoImpl implements MeetDao {
 	@Override
 	public void insertRep(ReplyDto rep) {
 		sqlSession.insert(namespace + "insertRep", rep);
+	}
+
+	@Override
+	public void deleteRep(int seq) {
+		sqlSession.update(namespace + "deleteRep", seq);
 	}
 
 	

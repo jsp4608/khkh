@@ -1,24 +1,33 @@
+<%@page import="cycle.model.MemberDto"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:requestEncoding value="UTF-8"/>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+<% 
+MemberDto login = (MemberDto) session.getAttribute("login");
+%>
+
 <head>
 <style type="text/css">
 .pds-table {
     width: 100%;
     margin: 0.7em 0 0 0;
+    background: white;
 }
 .pds-table th {
-    color: #92B91C;
-    border-bottom: 1px solid #92B91C;
+    color: white;
+	background-color: #36304a;    
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .pds-table td {
     padding-top: 3px;
     padding-bottom: 3px;
-    border-bottom: 1px solid silver;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
     line-height: 1.45;
 }
 .pds-table td a {
@@ -52,8 +61,8 @@
 <input type="hidden" name="seq" value="${pds.seq}"/>
 
 <tr>
-<th style="border-top: 1px solid #92B91C;">게시자</th>
-<td style="text-align: left; border-top: 1px solid silver;">${pds.id}</td>
+<th style="border-top: 1px solid black;">게시자</th>
+<td style="text-align: left; border-top: 1px solid black;">${pds.id}</td>
 </tr>
 <tr>
 <th>제목</th>
@@ -62,8 +71,16 @@
 <tr>
 <th>다운로드</th>
 <td style="text-align: left">
+<c:if test="${not empty pds.filename }">
+<button type="button" name="btnDown2" value="다운로드"
+onclick="filedowns('${pds.filename}','${pds.seq}')"> <img src="./img/icon_file.gif"> </button>
+
+
+
+<%-- 
 <input type="button" name="btnDown2" value="다운로드"
-onclick="filedowns('${pds.filename}','${pds.seq}')"/>
+onclick="filedowns('${pds.filename}','${pds.seq}')"/> --%>
+</c:if>
 </td>
 </tr>
 <tr>
@@ -98,10 +115,11 @@ name='content' id="_content" readonly="readonly">${pds.content}</textarea></td>
 
 
 
-
 <div id="search">
-	<button type="button" id="_btnAdd">수정하기</button>
-	<button type="button" id="_btnReply">답글달기</button>
+<c:if test="${pds.id eq login.id}">
+	<button type="button" id="_btnAdd" style="background-color:transparent; border: 0px"><img src="img/btn_modify.gif"><!-- 수정 --></button>
+	</c:if>
+	<button type="button" id="_btnReply" style="background-color:transparent; border: 0px"><img src="img/btn_reply.gif"><!-- 답변 --></button>
 </div>
 
 <script type="text/javascript">
