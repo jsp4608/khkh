@@ -37,7 +37,7 @@ int tday = cal.get(Calendar.DATE);
 %>
  --%>
 <!-- <form action="makemeetAf.do" method="post"> -->
-<form name="frmForm" id="_frmForm" method="post" action="makemeetAf.do">
+<form name="frmForm" id="_frmForm" method="post" action="makemeetAf.do" enctype="multipart/form-data">
 
 <table>
 <colgroup>
@@ -160,7 +160,9 @@ int tday = cal.get(Calendar.DATE);
 	
 	<tr>
 		<th>이미지</th>
-			<td></td>
+			<td><img id="meetImg" src="img/road-2562568.jpg" style="height: 200px; width: 200px"
+			class="img-fluid" alt="Responsive image">
+			<input type="file" id="uploadImg" name="uploadImg"></td>
 	</tr>
 	<tr>
 		<th>내용</th>	
@@ -241,4 +243,21 @@ int tday = cal.get(Calendar.DATE);
 		alert('글작성');	
 		$("#_frmForm").attr({ "target":"_self", "action":"makemeetAf.do" }).submit();	
 	});
+	
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#meetImg').attr('src', e.target.result);
+
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	$("#uploadImg").change(function() {
+		  readURL(this);
+		});
+
+	
+	
 </script>

@@ -9,3 +9,9 @@
     text-align: center;
     color: white;
 }
+
+.h2{
+	text-align: center;
+    font-style: oblique;
+    font-family: inherit;
+}

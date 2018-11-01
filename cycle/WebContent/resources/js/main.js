@@ -108,24 +108,8 @@ $(function() {
    * @param string
    */
   function fireCommand(string) {
-  	if (string.endsWith('자전거')) {
+  	if (string.endsWith('동영상')) {
   		$result.attr('class', 'red');
-  	} else if (string.endsWith('블루')) {
-  		$result.attr('class', 'blue');
-  	} else if (string.endsWith('그린')) {
-  		$result.attr('class', 'green');
-  	} else if (string.endsWith('옐로우')) {
-  		$result.attr('class', 'yellow');
-  	} else if (string.endsWith('오렌지')) {
-  		$result.attr('class', 'orange');
-  	} else if (string.endsWith('그레이')) {
-  		$result.attr('class', 'grey');
-  	} else if (string.endsWith('골드')) {
-  		$result.attr('class', 'gold');
-  	} else if (string.endsWith('화이트')) {
-  		$result.attr('class', 'white');
-  	} else if (string.endsWith('블랙')) {
-  		$result.attr('class', 'black');
   	} else if (string.endsWith('알람') || string.endsWith('알 람')) {
   		alert('알람');
   	} else if (string.endsWith('노래 켜') || string.endsWith('음악 켜')) {
@@ -140,7 +124,21 @@ $(function() {
   		audio.volume -= 0.2;
   	} else if (string.endsWith('스피치') || string.endsWith('말해줘') || string.endsWith('말 해 줘')) {
   	  textToSpeech($('#final_span').text() || '전 음성 인식된 글자를 읽습니다.');
-  	}
+  	} else if(string.endsWith('로그인') || string.endsWith('로그 인')){
+  		location.href="login.do";
+  	} else if(string.endsWith('로그아웃') || string.endsWith('로그 아웃')){
+  		location.href="logout.do";
+  	} else if(string.endsWith('홈')){
+  		location.href="main.do";
+  	} else if(string.endsWith('코스') || string.endsWith('코 스') || string.endsWith('자전거')){
+  		location.href="	course.do";
+  	} else if(string.endsWith('모임') || string.endsWith('모 임')){
+  		location.href="	meet.do";
+  	} else if(string.endsWith('정보') || string.endsWith('정 보')){
+  		location.href="	pdslist.do";
+  	} else if(string.endsWith('코스') || string.endsWith('코 스')){
+  		location.href="	course.do";
+  	} 
   }
 
   /**
