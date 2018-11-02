@@ -5,8 +5,8 @@
 
 .content {
   position: absolute;
-  top: 12%;
-  left: 51%;
+  top: 200px;
+  left: 59%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   height: 160px;
@@ -22,15 +22,7 @@
   height: 40px;
   padding: 0 40px;
 }
-.content__container:before {
-  content: '[';
-  left: 0;
-}
-.content__container:after {
-  content: ']';
-  position: absolute;
-  right: 0;
-}
+
 .content__container:after, .content__container:before {
   position: absolute;
   top: 0;

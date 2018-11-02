@@ -13,7 +13,9 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/marker.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/page.css">
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -60,28 +62,29 @@
 		
 	</form>
 
-<br><br><br><br><br>
+<br><br>
 
 <h1 center>코스 등록 </h1>
-
+<p style="color: white; text-align: center;">우클릭이나 경로설정 종료를 누르면 경로설정이 완료됩니다. 설정완료 후 경로를 수정 할수 없으니. 수정이 필요하면 새로고침후 이용바랍니다.</p>
 <!-- 지도 -->
 <div id="map" style=" width: 100%; height: 800px; margin:auto; border: 1px solid black;">
 		
-		<div style="    width: 366px;background-color: rgba( 50, 50, 50, 0.5 );
-   				 position: absolute;bottom: 0;z-index: 9999;"	>
-			<input 	style="position: relative; z-index: 9999" type="text" id="address">
-			<button style="position: relative; z-index: 9999" id="search">검색</button>
-		</div>
-		
-</div>
-
-	<div style="width: 100%; text-align: center;">
-		<button style="position: relative; z-index: 9999" id="clearone">전 마커 지우기</button>
+		<div style="width: 100%;z-index: 9999;padding:20px; height:10%"	>
+			<input 	style="position: relative; z-index: 9999" type="text" id="searchaddress">
+			<button style="position: relative; z-index: 9999; " id="search">검색</button>
+			<button style="position: relative; z-index: 9999" id="clearone">전 마커 지우기</button>
 		<button style="position: relative; z-index: 9999" id="clearall">마커 전체 지우기</button>
 		<button style="position: relative; z-index: 9999" id="complete">경로 설정 완료</button>
 		<button style="position: relative; z-index: 9999" id ="submitCourse">경로 추천</button>
 		</div>
-<p style="color: white; text-align: center;">우클릭이나 경로설정 종료를 누르면 경로설정이 완료됩니다. 설정완료 후 경로를 수정 할수 없으니. 수정이 필요하면 새로고침후 이용바랍니다.</p>
+		
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 		
 
 <script type="text/javascript">
@@ -307,18 +310,18 @@ printClock();
 				searchCoordinateToAddress(e.coord);
 			}); 
 
-			$('#address').on('keydown', function(e) {
+			$('#searchaddress').on('keydown', function(e) {
 				var keyCode = e.which;
 
 				if (keyCode === 13) { // Enter Key
-					searchAddressToCoordinate($('#address').val());
+					searchAddressToCoordinate($('#searchaddress').val());
 				}
 			});
 
 			$('#search').on('click', function(e) {
 				e.preventDefault();
 
-				searchAddressToCoordinate($('#address').val());
+				searchAddressToCoordinate($('#searchaddress').val());
 			});
 			
 

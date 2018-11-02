@@ -7,6 +7,8 @@
 <title>Araba</title>
 
 <style type="text/css">
+body{
+}
 
 .zui-table {
     border: solid 2px #DDEEEE;

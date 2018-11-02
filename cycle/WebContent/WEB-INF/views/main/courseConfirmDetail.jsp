@@ -15,31 +15,74 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=8mvn37FxJvLefDim3jdV&submodules=geocoder"></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/marker.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=8mvn37FxJvLefDim3jdV&submodules=geocoder"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/Tset.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/Tset1.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/marker.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/page.css">
 </head>
 <body>
-	<h2>코스 추천하기</h2>
+	
 
-	<form>
-	추천인: ${dto.memid } <br> <br> 
-	코스 이름: <input type="text" id="title" readonly value="${dto.title }"> <br> <br> 
+	<div class="wrap">
+	<h1 >코스 추천하기</h1>
+		<div class="mat-div">
+			<label for="first-name" class="mat-label">추천인</label> <input
+				type="text" class="mat-input" id="first-name"
+				value=" ${dto.memid } " required>
+		</div>
+
+		<div class="mat-div">
+			<label for="first-name" class="mat-label">코스명</label> <input
+				type="text" class="mat-input" id="first-name"
+				value=" ${dto.title } " required>
+		</div>
+
+
+		<div class="mat-div">
+			<label for="first-name" class="mat-label">코스 설명</label>
+			<textarea type="text" class="mat-input" id="last-name" required>${dto.description } </textarea>
+		</div>
+
+		<div class="mat-div">
+			<label for="address" class="mat-label">코스 길이 </label> <input
+				type="text" class="mat-input" id="address" required
+				value="${dto.len }meter">
+		</div>
+	</div>
+
+	<%-- 	<form>
+	추천인:<br> <br> 
+	코스 이름: <input type="text" id="title" readonly value=""> <br> <br> 
 	코스 설명: <textarea id="desc" readonly>${dto.description }</textarea><br><br>
 	코스 소요 시간: ${dto.courseday } 일 <br><br>
-	 코스 총 길이 : ${dto.len }meter
-	
-	</form>
+	 코스 총 길이 : 
 
-	<div id="map" style="width: 70%; height: 600px"></div>
+	
+	</form> --%>
+	<br>
+	<br>
+	<br>
+	<div id="map" style="width: 70%; height: 600px; margin:auto" ></div>
 
 	<form action="courseSuggestAF.do" id="courseform" method="post">
 
 	</form>
 
-	 <c:if test="${login.id eq 'admin'  }">
-	 	<c:if test="${!fin }">
-		<div>
-			<button id="confirm">경로 승인</button>
-			<button id="delete">삭제</button>
-		</div>
+	<c:if test="${login.id eq 'admin'  }">
+		<c:if test="${!fin }">
+			<div>
+				<button id="confirm">경로 승인</button>
+				<button id="delete">삭제</button>
+			</div>
 		</c:if>
 	</c:if>
 
