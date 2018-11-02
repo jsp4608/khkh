@@ -45,8 +45,16 @@
 	<put-attribute name="main" value="/WEB-INF/views/meet/makemeet.jsp"/>
 </definition>
 
+<definition name="writemeet.tiles" extends="meet.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/meet/writemeet.jsp"/>
+</definition>
+
 <definition name="meetpolllist.tiles" extends="meet.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/meet/meetpolllist2.jsp"/>
+</definition>
+
+<definition name="meetpollbbs.tiles" extends="meet.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/meet/meetpollbbs.jsp"/>
 </definition>
 
 <definition name="meetpolldetail.tiles" extends="meet.tiles">

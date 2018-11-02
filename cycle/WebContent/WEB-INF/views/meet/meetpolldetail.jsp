@@ -1,87 +1,173 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="cycle.model.MeetPollDto" %>
 <fmt:requestEncoding value="utf-8"/>
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 
+<style>
+input[type=button]{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+input[type=button]:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+input[type=button]:before,input[type=button]:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+input[type=button]:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+input[type=button]:hover:before,input[type=button]:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+input[type=submit]{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+input[type=submit]:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+input[type=submit]:before,input[type=submit]:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+input[type=submit]:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+input[type=submit]:hover:before,input[type=submit]:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+</style>
+
+<%
+
+MeetPollDto dto = (MeetPollDto)request.getAttribute("meet");
+
+java.util.Date format = dto.getWdate();
+SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH:mm");
+String current = formatter.format(format);
+%>
+
+<h1>모임 Riding</h1>
+<br><br>
 <form name="frmForm" id="_frmForm" method="post" action="meetupdate.do">
 
-<table>
-
 <input type="hidden" name="pollid" value="${meet.pollid }"/>
-<%-- <input type="hidden" name="pollsubid" value="${pollsublist.pollsubid }"/> --%>
-<%-- <input type="hidden" name="id" value="${login.id }"/> --%>
 <input type="hidden" name="id" value="${login.id }"/>
-<colgroup>
-<col style="width: 200px"/>
-<col style="width: auto;"/>
-</colgroup>
 
-<tbody>
-	<tr>
-		<th>아이디</th>
-		<td style="text-align: left">${meet.id }</td>
-	</tr>
-	<tr>
-		<th>제목</th>
-		<td style="text-align: left;">${meet.title }</td>
-	</tr>
-	<tr>
-		<th>작성일</th>
-		<td style="text-align: left;">${meet.wdate }</td>
-	</tr>
-	<tr>
-		<th>지역</th>
-		<td style="text-align: left;">${meet.location }</td>
-	</tr>
-	<tr>
-		<th>만날 날짜</th>
-		<td style="text-align: left;">${meet.sdate }</td>
-	</tr>
-	<tr>
-		<th>끝나는 날짜</th>
-		<td style="text-align: left;">${meet.edate }</td>
-	</tr>
-	<tr>
-		<th>참가자수</th>
-		<td style="text-align: left;">${meet.polltotal }</td>
-	</tr>
-	<tr>
-		<th>이미지</th>
-		<c:if test="${meet.img ne 'false' }">
-		<td style="text-align: left;"><img id="" src="img/${meet.img }"  style="height: 200px; width: 200px"
-			class="img-fluid" alt="이미지없음"></td>
-		</c:if>
-		
-		<c:if test="${meet.img eq 'false' }">
-		<td style="text-align: left;"><img id="" src="img/road-2562568.jpg"  style="height: 200px; width: 200px"
-			class="img-fluid" alt="false"></td>
-		</c:if>
-	</tr>
-	<tr>
-		<th>내용</th>
-		<td style="text-align: left"><textarea rows="10" cols="50" 
-		name='content' id="_content" readonly="readonly">${meet.content}</textarea></td>
-	</tr>
-	<tr>
-		<td colspan="2" style="height: 50px; text-align: center;">
-		<span>
-			<c:if test="${meet.id eq login.id }">
-			<!-- <a href="#none" id="_btnUpdate">(로그인아이디가 같았을 시)모임수정</a> -->
-			<!-- <a href="#none" id="_btnDel">(로그인아이디가 같았을 시)모임삭제</a> -->
-			<button type="button"  id="_btnUpdate">모임수정</button>
-			<button type="button"  id="_btnDel">모임삭제</button>
-			<%-- </c:if> --%>
-			<!-- <a href="#none" id="_btnJoin">모임참가</a> -->
+ 		<div class="form-group">
+            <!--START OF A REGULAR TEXT INPUT FIELD-->
+            <label>아이디</label>
+            <input name="id" class="form-control input-sm"
+            readonly="readonly" value='${meet.id }' style="width: 250px"/>
+            <!--END TEXT INPUT FIELD-->
+        </div>
+		<div class="form-group">
+            <!--START OF A REGULAR TEXT INPUT FIELD-->
+            <label>제목</label>
+            <input name="title" class="form-control input-sm" 
+            readonly="readonly" value='${meet.title }' style="width: 500px"/>
+            <!--END TEXT INPUT FIELD-->
+        </div>
+        <div class="form-group">
+            <!--START OF A REGULAR TEXT INPUT FIELD-->
+            <label>작성일</label>
+            <input name="wdate" class="form-control input-sm" 
+            readonly="readonly" value='<%=current %>' style="width: 500px"/>
+            <!--END TEXT INPUT FIELD-->
+        </div>
+        <div class="form-group">
+            <!--START OF A REGULAR TEXT INPUT FIELD-->
+            <label>지역</label>
+            <input name="location" class="form-control input-sm" 
+            readonly="readonly" value='${meet.location }' style="width: 500px"/>
+            <!--END TEXT INPUT FIELD-->
+        </div>
+         <div class="form-group">
+            <!--START OF A REGULAR TEXT INPUT FIELD-->
+            <label>만날 날짜</label>
+            <input name="sdate" class="form-control input-sm" 
+            readonly="readonly" value='${meet.sdate }' style="width: 500px"/>
+            <!--END TEXT INPUT FIELD-->
+        </div>
+        <div class="form-group">
+            <!--START OF A REGULAR TEXT INPUT FIELD-->
+            <label>끝나는 날짜</label>
+            <input name="edate" class="form-control input-sm" 
+            readonly="readonly" value='${meet.edate }' style="width: 500px"/>
+            <!--END TEXT INPUT FIELD-->
+        </div>
+        <div class="form-group">
+            <!--START OF A REGULAR TEXT INPUT FIELD-->
+            <label>참가자수</label>
+            <input name="polltotal" class="form-control input-sm" 
+            readonly="readonly" value='${meet.polltotal }' style="width: 500px"/>
+            <!--END TEXT INPUT FIELD-->
+        </div>
+         <div class="form-group">
+            <!--START OF A REGULAR TEXT INPUT FIELD-->
+            <label>이미지</label><br>
+            <c:if test="${meet.img ne null }">
+	            <img id="" src="img/${meet.img }"  style="height: 300px; width: 400px"
+				class="img-fluid" alt="Responsive image">
+            </c:if>
+            <c:if test="${meet.img eq null }">
+				<img id="" src="img/road-2562568"  style="height: 300px; width: 400px"
+				class="img-fluid" alt="Responsive image">
 			</c:if>
-		</span>
-		</td>
-	</tr>
-	
-</tbody>
-</table>
+        </div>
+		<div class="form-group">
+            <!--START OF A REGULAR TEXT INPUT FIELD-->
+            <label>라이딩 세부 내용</label>
+            <textarea  name='content' id="_content" readonly="readonly"
+            class="form-control" rows="10" cols="50" style="width: 700px">${meet.content}</textarea>
+        </div>
 
 </form>
 <form action="polling.do" method="post">
@@ -89,92 +175,38 @@
 <input type="hidden" name="pollid" value="${meet.pollid }"/>
 <input type="hidden" name="id" value="${login.id }"/>
 
-<table>
-<colgroup>
-<col style="width: 200px"/>
-<col style="width: auto;"/>
-</colgroup>
-
-<tr>
-	<th>투표 문항수</th>
-	<td style="text-align: left;">
-	${meet.itemcount }개	
-	</td>
-</tr>
-
-<tr>
-	<th>투표 상세 문항</th>
-	<td style="text-align: left;">
-	
-	<c:forEach items="${pollsublist }" var="psub" varStatus="vs">
-	
+	<div class="form-group">
+	    <label>투표 문항수</label>
+	    <input name="polltotal" class="form-control input-sm" 
+	    readonly="readonly" value='${meet.itemcount } 개' style="width: 500px"/>
+  	</div>
+  	<div class="form-group">
+	    <label>투표 상세 문항</label><br>
+	</div>
+	    <c:forEach items="${pollsublist }" var="psub" varStatus="vs">
 		<!-- 번호:radio -->
-		${vs.count }번:<input type="radio" name="pollsubid"
-		${vs.count==1 ?"checked='checked'":"" } value="${psub.pollsubid }">
-		
+		${vs.count }번   :  <input type="radio" name="pollsubid"
+    	${vs.count==1 ?"checked='checked'":"" } value="${psub.pollsubid }">
 		<!-- 항목 명칭 -->
-		<input type="text" size="60" readonly="readonly"
+	<div class="form-group">	
+		<input type="text" size="60" readonly="readonly" class="form-control input-sm" 
+		style="display: inline-block; width: 500px;"
 		name="answer" value="${psub.answer }">	
-		
 		<br>
-		
+	</div>
 	</c:forEach>	
-
-	</td>
-</tr>
-
-<tr align="center">
-	<td colspan="2">
-		<input type="submit" value="투표하기">
-	</td>
-</tr>
-</table>
+  	<br><br>
+	<c:if test="${meet.id eq login.id }">
+	<input type="submit" value="투표하기"  style="display: inline-block; margin-right: 50px; border-radius: 4px;">
+	<input type="button" value="모임 수정"  id="_btnUpdate"
+        style="display: inline-block; margin-right: 50px; border-radius: 4px;">	
+    <input type="button" value="모임 삭제"  id="_btnDel"
+        style="display: inline-block; margin-right: 50px; border-radius: 4px;">	
+	</c:if>
 </form>
-<%-- 
-<table style="width: auto" border="1" bordercolor="lightgray">
-<tr>
-	<td style="width: auto;">ㄴ</td>
-	<td width="50">${meet.id }</td>
-	<td width="350">내용</td>
-	<td width="150">작성일</td>
-	<td width="100"><button>수정</button></td>
-	<td width="100"><button>삭제</button></td>
-	<td width="100"><button>답글</button></td>
-</tr>
 
-<!-- <tr>
-	<td>댓글이 달려있지 않습니다.</td>
-</tr> -->
-</table>
-
-<form action="commentControl" method="post">
-	<input type="hidden" name="id" value="id">
-	<input type="hidden" name="command" value="insertcomment">
-	<input type="hidden" name="ref" value="seq">
-	<input type="hidden" name="parent" value="0">
+<br><br>
 	
-	<table border="1" bordercolor="black">
-			<td width="150">
-				<div>
-					<input type="text" name="id" value="id"
-						readonly="readonly" style="text-align: center">
-				</div>
-			</td>
-
-			<td width="550">
-				<div>
-					<input type="text" class="textarea" name="content">
-				</div>
-			</td>
-
-			<td width="100">
-				<div id="btn" style="text-align: center;">
-					<input type="submit" value="댓글등록" style="text-align: center;">
-				</div>
-			</td>
-		</table>
-</form> --%>
-
 <div>
 	<!--  작업중 -->
 	<form action="frmForm" id="_form" method="post">
@@ -192,18 +224,16 @@
 							<div
 								style="text-align: left; border: 1px solid #aaa; padding: 20px; margin: 20px">
 								<!-- 아이디 -->
-								<span style="display: inline-block; font-weight: 700; margin-right: 5px;">${i.id }</span>
+								<span style="display: inline-block; font-size: 18px; margin-right: 5px;">${i.id }</span>
 								<!-- 날짜 -->
 								<span style="display: inline-block; font-size: 12px; color: #555">${i.wdate }</span>
 								<hr style="border: none; border-bottom: 1px solid #aaa; width: 100%;">
-								<p style="margin-top: 10px; word-wrap: break-word;">${i.content }</p>
+								<p style="margin-top: 13px; word-wrap: break-word; font-size: 14px;">${i.content }</p>
 			
 								<div style="text-align: right;">
 								<c:if test="${login.id eq i.id}">
-									<%-- <a href="#none" id="_RepDel" value="${i.seq }">(로그인아이디가 같았을 시)댓글삭제</a> --%>	
-									<%-- <button type="button" class="mainbut" onclick="changeReply(this)"
-										value="${i.seq }">수정</button> --%>
-									<button  type="button" value="${i.seq }" class="mainbut" onclick="delReply(this)">삭제</button>
+									<button  type="button" value="${i.seq }" class="mainbut" onclick="delReply(this)" 
+									style="width:60px; height: 30px; font-size: 13px;">삭제</button>
 								</c:if> 
 								</div>
 							</div>
@@ -211,22 +241,6 @@
 					</tr>
 					</c:if>
 					<c:if test="${i.del !=0}">
-						<%-- <tr>
-							<td colspan="3">
-								<div
-									style="text-align: left; border: 1px solid #aaa; padding: 20px; margin: 20px">
-									<!-- 아이디 -->
-									<span
-										style="display: inline-block; font-weight: 700; margin-right: 5px;">${i.id }</span>
-									<!-- 날짜 -->
-									<span style="display: inline-block; font-size: 12px; color: #555">${i.wdate }</span>
-									<hr
-										style="border: none; border-bottom: 1px solid #aaa; width: 100%;">
-									<p style="margin-top: 10px; word-wrap: break-word;">이 글은 삭제된 글입니다.
-									</p>
-								</div>
-							</td>
-						</tr> --%>
 					</c:if>
 			</c:forEach>
 		</c:if>
@@ -249,12 +263,13 @@
 							<div
 								style="text-align: left; border: 1px solid #aaa; padding: 20px; margin: 20px">
 								<!-- 아이디 -->
-								<span style="display: inline-block; font-weight: 700; margin-right: 5px;"><%-- <%=reply.getId()%> --%>${login.id }</span>
+								<span style="display: inline-block; font-weight: 700; margin-right: 5px; font-size: 15px;">${login.id }</span>
 								<!-- 날짜 -->
-								<hr style="border: none; border-bottom: 1px solid #aaa; width: 100%;">
-								<textarea rows="3" cols="130" style="margin-top: 10px; word-wrap: break-word;" name="content"></textarea>
+								<hr style="border: none; border-bottom: 1px solid #aaa; width: 100%; font-size: 12px;">
+								<textarea rows="3" cols="150" style="margin-top: 10px; word-wrap: break-word; 
+												font-size: 12px;" name="content"></textarea>
 								<div style="text-align: right; margin-top: 13px">
-									<input type="submit" value="글쓰기">
+									<input type="submit" value="글쓰기" style="width:120px; height: 30px; font-size: 13px; border-radius: 4px;">
 								</div>
 					</div>
 					</td>
