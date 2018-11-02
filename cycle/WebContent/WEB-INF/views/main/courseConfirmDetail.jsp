@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,28 +18,30 @@
 </head>
 <body>
 	<h2>코스 추천하기</h2>
-	
-	<form>
-	코스 이름: <input type="text" id="title" readonly value="${dto.title }"> 
-	<br> <br> 코스 설명:
-	<textarea id="desc" readonly>${dto.description }</textarea>
 
-		<br> 코스 소요 시간:  ${dto.courseday } 일 <br>
-		
-		코스 총 길이 : ${dto.len }meter<br>
+	<form>
+	추천인: ${dto.memid } <br> <br> 
+	코스 이름: <input type="text" id="title" readonly value="${dto.title }"> <br> <br> 
+	코스 설명: <textarea id="desc" readonly>${dto.description }</textarea><br><br>
+	코스 소요 시간: ${dto.courseday } 일 <br><br>
+	 코스 총 길이 : ${dto.len }meter
+	
 	</form>
 
 	<div id="map" style="width: 70%; height: 600px"></div>
-	
+
 	<form action="courseSuggestAF.do" id="courseform" method="post">
-		
+
 	</form>
 
-	<div>
-		<button id ="confirm" >경로 승인</button>
-		<button id ="delete">삭제</button>
-	</div>
-
+	 <c:if test="${login.id eq 'admin'  }">
+	 	<c:if test="${!fin }">
+		<div>
+			<button id="confirm">경로 승인</button>
+			<button id="delete">삭제</button>
+		</div>
+		</c:if>
+	</c:if>
 
 	<script>
 		var HOME_PATH = window.HOME_PATH || '.';
@@ -62,7 +67,6 @@
 		var patharr;
 		var distance = 0;
 
-		
 		//마커 인포 추가
 		function pushmarkinfo(point, distance) {
 
@@ -105,24 +109,22 @@
 		var String = "${dto.mapdata}";
 		var arr = String.split(',');
 		var points = [];
-		for(var i =0; i < arr.length;i++){
+		for (var i = 0; i < arr.length; i++) {
 			var xy = arr[i].split("|");
 			var point = new naver.maps.Point();
-			point.add(xy[0],xy[1]);
+			point.add(xy[0], xy[1]);
 			points.push(point);
-			
-		}
-		
-		map.setCenter(points[0]);
 
-		
+		}
+
+		map.setCenter(points[0]);
 
 		// 지도내 거리재기 또는 면적재기를 클릭하세요.
 		// 거리/면적재기 동작 중 마우스 오른쪽 버튼을 클릭하면 해당 거리/면적재기가 종료됩니다.
 		var Measure = function(buttons) {
 
 		};
-		
+
 		$
 				.extend(
 						Measure.prototype,
@@ -232,21 +234,19 @@
 								return this._polyline;
 							},
 
-
 							_onClickDistance : function(e, coordin) {
 								var map = this.map
 								var coord;
-								if(e != null){
+								if (e != null) {
 									coord = e.coord;
-								}else{
+								} else {
 									coord = coordin
 								}
-								
+
 								if (!this._polyline) {
 
 									// 임시로 보여줄 점선 폴리라인을 생성합니다.
 									guideline = this._getguideline(coord);
-
 
 									this._addMileStone(coord, this
 											._fromMetersToText(distance
@@ -280,7 +280,6 @@
 
 							},
 
-
 							_bindMap : function(map) {
 
 							},
@@ -295,27 +294,23 @@
 
 		measures.setMap(map);
 		measures._startDistance();
-		
-		
-		for(var i = 0; i < points.length-1; i++){
-			measures._onClickDistance(null, points[i]);
-			
-		 };
-		 
-		 measures._finishDistance();
 
+		for (var i = 0; i < points.length - 1; i++) {
+			measures._onClickDistance(null, points[i]);
+
+		};
+
+		measures._finishDistance();
 
 		$('#confirm').on('click', function(e) {
-			
+
 			location = "suggestConfirm.do?seq=${dto.seq}"
 		});
-		
+
 		$('#delete').on('click', function(e) {
-			
+
 			location = "suggestDelete.do?seq=${dto.seq}";
 		});
-		
-
 	</script>
 </body>
 </html>

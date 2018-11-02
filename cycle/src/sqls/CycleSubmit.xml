@@ -7,7 +7,7 @@
 
 <insert id="submitCourse" parameterType="cycle.model.CourseDto">
 	INSERT INTO COURSETEMP
-	VALUES(SEQ_COURSETEMP.NEXTVAL, #{title}, 'temp', #{description}, #{len}, #{courseday}, #{mapdata})
+	VALUES(SEQ_COURSETEMP.NEXTVAL, #{title}, #{memid}, #{description}, #{len}, #{courseday}, #{mapdata})
 </insert>
 
 <select id="getCourseSuggestion" resultType="cycle.model.CourseDto">
@@ -37,7 +37,7 @@
 
 <insert id="confirmCourse" parameterType="cycle.model.CourseDto">
 	INSERT INTO COURSE
-	VALUES(SEQ_COURSE.NEXTVAL, #{title}, 'temp', #{description}, #{len}, #{courseday}, #{mapdata})
+	VALUES(SEQ_COURSE.NEXTVAL, #{title}, #{memid}, #{description}, #{len}, #{courseday}, #{mapdata})
 </insert>
 
 

@@ -50,8 +50,10 @@ public class CourseController {
 		
 		CourseDto dto = dao.getMemberCouseDetail(seq);
 		
+		String fin = "true";
 
 		model.addAttribute("dto", dto);
+		model.addAttribute("fin", fin);
 		
 		System.out.println("coursedetail: " + dto.toString());
 		

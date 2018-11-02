@@ -1,8 +1,7 @@
 .header-wrap{
 	max-height: 150px;
 	padding: 20px;
-	border: 1px solid black;
-	position: relative;
+	position: absolute;
 }
 
 

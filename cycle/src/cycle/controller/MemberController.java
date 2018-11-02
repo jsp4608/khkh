@@ -55,6 +55,8 @@ public class MemberController {
 		// login을 DB 확인
 		login = memberDao.login(mem);
 		
+		System.out.println("login: " +mem);
+		
 		if(login != null && !login.getId().equals("")) {
 			session.setAttribute("login", login);
 			return "redirect:/main.do";			
@@ -115,7 +117,7 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		
 		return "login.tiles";
 	}
 	
@@ -141,13 +143,6 @@ public class MemberController {
 		logger.info("Welcome logout");		
 		session.invalidate();			
 		return "login.tiles";		
-	}
-	
-	@RequestMapping(value="mypage.do", 
-			method=RequestMethod.GET)
-	public String mypage(MemberDto mem,Model model){
-		logger.info("mypage " + new Date());		
-		return "mypage.tiles";		
 	}
 	
 	

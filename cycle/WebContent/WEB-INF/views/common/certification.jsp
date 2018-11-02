@@ -11,10 +11,11 @@
 <style type="text/css">
 
 .pds-table {
-    width: 100%;
+
     margin: 0.7em 0 0 0;
-    border-top: 1px solid silver;
-    border-bottom: 1px solid silver;
+    
+    border-top: 10px solid silver;
+    border-bottom: 10px solid silver;
     border-left: 10px solid silver;
     border-right: 10px solid silver;
     

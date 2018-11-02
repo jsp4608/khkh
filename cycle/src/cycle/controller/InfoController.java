@@ -56,7 +56,7 @@ private static final Logger logger = LoggerFactory.getLogger(InfoController.clas
 		param.setStart(start);
 		param.setEnd(end);
 		
-		// 글 갯수
+		// 湲� 媛��닔
 		int totalRecordCount = pdsDao.getPdsCount(param);
 		List<PdsDto> pdslist = pdsDao.getPdsPagingList(param);
 		
@@ -71,7 +71,7 @@ private static final Logger logger = LoggerFactory.getLogger(InfoController.clas
 		model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
 		model.addAttribute("totalRecordCount", totalRecordCount);
 		
-		// 카테고리와 검색한 단어설정
+		// 移댄뀒怨좊━�� 寃��깋�븳 �떒�뼱�꽕�젙
 		model.addAttribute("s_category",param.getS_category());
 		model.addAttribute("s_keyword", param.getS_keyword());
 		
@@ -124,32 +124,37 @@ private static final Logger logger = LoggerFactory.getLogger(InfoController.clas
 		
 		System.out.println("original: " + fileload.getOriginalFilename());
 		
-		// filename 취득
+		// filename 痍⑤뱷
 		dto.setFilename(fileload.getOriginalFilename());
 		
-		// upload 경로
+		// upload 寃쎈줈
 		// tomcat
 	//	String fupload = req.getServletContext().getRealPath("/upload");
-	//	logger.info("업로드경로:" + fupload);
+	//	logger.info("�뾽濡쒕뱶寃쎈줈:" + fupload);
 		
-		// 폴더
+		// �뤃�뜑
 		String fupload = "c:\\tmp";
 		
 		String f = dto.getFilename();
-		String newFile = FUpUtil.getNewFile(f);
+		if(!f.equals("")) {
+			f = FUpUtil.getNewFile(f);
+		}
 		
-		dto.setFilename(newFile);		
-		logger.info("변경된 파일명:" + newFile);
+		dto.setFilename(f);		
+		logger.info("蹂�寃쎈맂 �뙆�씪紐�:" + f);
 		
 		try {
-		
-			File file = new File(fupload + "/" + newFile);		
-			logger.info("경로와 파일명:" + fupload + "/" + newFile);
+			if(!f.equals("")) {
+				File file = new File(fupload + "/" + f);
+				System.out.println("file: " + file.toString());
+				
+				
+				FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+			}
+				
 			
-			//실제로 업로드 되는 부분		
-			FileUtils.writeByteArrayToFile(file, fileload.getBytes());
 			
-			// DB 저장
+			// DB ���옣
 			pdsDao.uploadPds(dto);			
 			
 		} catch (IOException e) {
@@ -177,7 +182,7 @@ private static final Logger logger = LoggerFactory.getLogger(InfoController.clas
 	}
 	
 	
-	//댓글 (등록란??)
+	//�뙎湲� (�벑濡앸�??)
 	@RequestMapping(value = "pdsreply.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
 	public String pdsreply(PdsDto dto, Model model)throws Exception {
@@ -188,12 +193,12 @@ private static final Logger logger = LoggerFactory.getLogger(InfoController.clas
 		return "pdsreply.tiles";
 	}
 	
-	//댓글(달리면)
+	//�뙎湲�(�떖由щ㈃)
 	@RequestMapping(value = "pdsreplyAf.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
 	public String pdsreplyAf(PdsDto dto, Model model) {
 		System.out.println("pdsreplyAF.do IN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		dto.setFilename(" ");
+		dto.setFilename("");
 		try {
 			pdsService.reply(dto);
 		} catch (Exception e) {
@@ -211,11 +216,11 @@ private static final Logger logger = LoggerFactory.getLogger(InfoController.clas
 						HttpServletRequest req) throws Exception{
 		
 		
-		// 다운할 경로
+		// �떎�슫�븷 寃쎈줈
 		// 1.tomcat
 		// String fupload = req.getServletContext().getRealPath("/upload");
 					
-		// 2.폴더
+		// 2.�뤃�뜑
 		String fupload = "c:\\tmp";
 		
 		File downloadFile = new File(fupload + "/" + filename);
@@ -243,7 +248,7 @@ private static final Logger logger = LoggerFactory.getLogger(InfoController.clas
 	@RequestMapping(value="pdsupdateAf.do", 
 			method={RequestMethod.GET, RequestMethod.POST})
 	public String pdsupdateAf(PdsDto dto, 
-			String namefile,	// write와는 달리 추가되었음. 기존의 파일명 
+			String namefile,	// write���뒗 �떖由� 異붽��릺�뿀�쓬. 湲곗〈�쓽 �뙆�씪紐� 
 			HttpServletRequest req,
 			Model model,
 			@RequestParam(value="fileload", required=false)
@@ -254,26 +259,26 @@ private static final Logger logger = LoggerFactory.getLogger(InfoController.clas
 		
 		// 1.tomcat
 		// String fupload = req.getServletContext().getRealPath("/upload");
-		// 2.폴더
+		// 2.�뤃�뜑
 		String fupload = "c:\\tmp";
 		
-		// 정상적으로 변경할 파일이 있을 때
+		// �젙�긽�쟻�쑝濡� 蹂�寃쏀븷 �뙆�씪�씠 �엳�쓣 �븣
 		if(dto.getFilename()!=null && !dto.getFilename().equals("")) {
 			String f = dto.getFilename();
 			String newFile = FUpUtil.getNewFile(f);
 			
 			dto.setFilename(newFile);		
-			logger.info("변경된 파일명:" + newFile);
+			logger.info("蹂�寃쎈맂 �뙆�씪紐�:" + newFile);
 			
 			try {
 			
 				File file = new File(fupload + "/" + newFile);		
-				logger.info("경로와 파일명:" + fupload + "/" + newFile);
+				logger.info("寃쎈줈�� �뙆�씪紐�:" + fupload + "/" + newFile);
 				
-				//실제로 업로드 되는 부분		
+				//�떎�젣濡� �뾽濡쒕뱶 �릺�뒗 遺�遺�		
 				FileUtils.writeByteArrayToFile(file, fileload.getBytes());
 				
-				// DB 저장
+				// DB ���옣
 				pdsDao.updatePds(dto);				
 				
 			} catch (IOException e) {
@@ -281,12 +286,12 @@ private static final Logger logger = LoggerFactory.getLogger(InfoController.clas
 				e.printStackTrace();
 			}
 		}else {
-			// 정상적으로 변경할 파일이 없을 때
+			// �젙�긽�쟻�쑝濡� 蹂�寃쏀븷 �뙆�씪�씠 �뾾�쓣 �븣
 			if(namefile != null && !namefile.equals("")) {
 				dto.setFilename(namefile);
 				pdsDao.updatePds(dto);				
 			}else {
-				logger.info("update를 할 수 없습니다");
+				logger.info("update瑜� �븷 �닔 �뾾�뒿�땲�떎");
 			}		
 		}
 		return "redirect:/pdslist.do";

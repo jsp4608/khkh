@@ -8,8 +8,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-     
 <!-- 검색 카테고리를 유지 start -->
 <%
 String category = (String)request.getAttribute("s_category");

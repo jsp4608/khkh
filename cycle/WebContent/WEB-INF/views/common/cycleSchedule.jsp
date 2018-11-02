@@ -11,15 +11,19 @@
 <style type="text/css">
 
 .pds-table {
-    width: 100%;
+
     margin: 0.7em 0 0 0;
+}
+img {
+    width:1000px; 
+    height: auto;
 }
 
 </style>
 </head>
 <body>
 
-<table>
+<table class="pds-table" >
 	<tr><h1>2018 자전거대회 일정</h1></tr>
 	<tr>
 	<td>
