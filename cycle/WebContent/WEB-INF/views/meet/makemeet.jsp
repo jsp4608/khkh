@@ -161,7 +161,7 @@ int tday = cal.get(Calendar.DATE);
 	<tr>
 		<th>이미지</th>
 			<td><img id="meetImg" src="img/road-2562568.jpg" style="height: 200px; width: 200px"
-			class="img-fluid" alt="Responsive image">
+			class="img-fluid" alt="이미지 등록">
 			<input type="file" id="uploadImg" name="uploadImg"></td>
 	</tr>
 	<tr>

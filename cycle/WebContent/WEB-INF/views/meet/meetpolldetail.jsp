@@ -50,14 +50,14 @@
 	</tr>
 	<tr>
 		<th>이미지</th>
-		<c:if test="${meet.img ne null }">
+		<c:if test="${meet.img ne 'false' }">
 		<td style="text-align: left;"><img id="" src="img/${meet.img }"  style="height: 200px; width: 200px"
-			class="img-fluid" alt="Responsive image"></td>
+			class="img-fluid" alt="이미지없음"></td>
 		</c:if>
 		
-		<c:if test="${meet.img eq null }">
-		<td style="text-align: left;"><img id="" src="img/road-2562568"  style="height: 200px; width: 200px"
-			class="img-fluid" alt="Responsive image"></td>
+		<c:if test="${meet.img eq 'false' }">
+		<td style="text-align: left;"><img id="" src="img/road-2562568.jpg"  style="height: 200px; width: 200px"
+			class="img-fluid" alt="false"></td>
 		</c:if>
 	</tr>
 	<tr>
