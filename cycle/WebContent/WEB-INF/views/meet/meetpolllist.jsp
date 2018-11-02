@@ -288,7 +288,7 @@ button[type=button]:hover:before,button[type=button]:hover:after{
 					class="img-fluid" alt="Responsive image"></a></td>
 			</c:if> --%>
 					<!--Effect: Top to Bottom -->
-					<c:if test="${meet.img ne null }">
+					<c:if test="${meet.img ne 'false' }">
 						<td style="text-align: left;">
 							<div class="pic">
 								<a href="meetpolldetail.do?pollid=${meet.pollid}"> <img
@@ -313,6 +313,33 @@ button[type=button]:hover:before,button[type=button]:hover:after{
 							</div>
 						</td>
 					</c:if>
+					
+					<c:if test="${meet.img eq 'false' }">
+						<td style="text-align: left;">
+							<div class="pic">
+								<a href="meetpolldetail.do?pollid=${meet.pollid}"> <img
+									src="img/road-2562568.jpg" style="height: 300px; width: 300px;"
+									class="pic-image" alt="Responsive image"> <span
+									class="pic-caption top-to-bottom">
+										<h1 class="pic-title" style="margin-top: 50px; margin-bottom: 20px">${meet.title }</h1>
+										<p style="color: #fff;">${meet.sdate} ~ ${meet.edate}</p>
+										<p style="color: #fff;">${meet.location}</p>
+										<p style="color: #fff;">
+										<c:choose>
+										<c:when test="${meet.content.length() < 20}">
+										${meet.content}
+										</c:when>
+										<c:otherwise>
+										${meet.content.substring(0, 20)}...
+										</c:otherwise>
+										</c:choose>
+										</p>
+								</span>
+								</a>
+							</div>
+						</td>
+					</c:if>
+					
 				</c:if>
 		</span>
 		</li>
