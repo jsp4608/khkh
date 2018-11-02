@@ -48,7 +48,7 @@ public class MeetController {
 	@RequestMapping(value="meet.do", method = {RequestMethod.GET,	RequestMethod.POST})
 	public String main() {
 
-		return "meet.tiles";
+		return "meetpolllist.tiles";
 	}
 	
 	@RequestMapping(value="meetpolllist.do", method = {RequestMethod.GET,	RequestMethod.POST})
@@ -100,6 +100,63 @@ public class MeetController {
 		return "meetpolllist.tiles";
 	}
 	
+	@RequestMapping(value="meetpollbbs.do", method = {RequestMethod.GET,	RequestMethod.POST})
+	public String meetpollbbs(HttpServletRequest req, Model model, MeetParam param) throws Exception {
+		
+		logger.info("MeetController meetpollbbs! " + new Date());
+		
+		// String id = ((MemberDto)req.getSession().getAttribute("login")).getId();
+		// model.addAttribute("plists", meetDao.getMeetAllList(id));
+		
+		// paging 泥섎━
+		int sn = param.getPageNumber();
+		int start = (sn) * param.getRecordCountPerPage() + 1;
+		int end = (sn+1) * param.getRecordCountPerPage();
+		/*
+	  	0	
+	  		0 * 10 + 1  -> 1
+	  		0+1 * 10	-> 10
+	  	1	
+	  		1 * 10 + 1  -> 11
+	  		1+1 * 10	-> 20
+	  		
+	  		[1][2][3][4][5][6][7][8][9][10]
+		*/
+		
+		param.setStart(start);
+		param.setEnd(end);
+		
+		// 湲��쓽 媛��닔
+		int totalRecordCount = meetDao.getMeetCount(param);
+		List<MeetPollDto> meetlist = meetDao.getMeetPagingList(param);
+		
+		model.addAttribute("meetlist", meetlist);
+		
+		model.addAttribute("pageNumber", sn);
+		model.addAttribute("pageCountPerScreen", 10);
+		model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
+		model.addAttribute("totalRecordCount", totalRecordCount);
+		
+		/*
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("seq: " + list.get(i).toString());
+		}
+		*/
+		
+		model.addAttribute("s_category", param.getS_category());
+		model.addAttribute("s_keyword", param.getS_keyword());
+		
+		return "meetpollbbs.tiles";
+	}
+
+	@RequestMapping(value="writemeet.do", method={RequestMethod.GET, RequestMethod.POST})
+	public String writemeet(Model model) {
+		
+		logger.info("KhPollConroller makemeet! " + new Date());		
+		
+		return "writemeet.tiles";
+	}
+	
 	@RequestMapping(value="makemeet.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String makemeet(Model model) {
 		
@@ -118,12 +175,11 @@ public class MeetController {
 		// filename 취득
 		pbean.setImg(uploadImg.getOriginalFilename());
 		
-		
 		// upload 경로
 		
 	//	String fupload = "c:\\tmp";
 	//	String fupload = req.getServletContext().getRealPath("/upload");
-		String fupload = "C:\\Users\\sp\\Desktop\\finalfinalfinal\\cycle\\WebContent\\img";
+		String fupload = "C:\\Users\\PC\\Desktop\\final final\\cycle\\WebContent\\img";
 		System.out.println("파일 경로:" + fupload);
 		
 		String f = pbean.getImg();

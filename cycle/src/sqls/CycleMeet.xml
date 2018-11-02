@@ -69,6 +69,7 @@
 <select id="getMeetAllList" resultType="cycle.model.MeetPollDto">	
 	SELECT *
 	FROM MEETPOLL
+	WHERE DEL=0
 	ORDER BY SDATE DESC	
 </select>
 
@@ -169,7 +170,7 @@
 	FROM (SELECT ROW_NUMBER() OVER(ORDER BY SDATE ASC) AS RNUM, 
 	POLLID, ID, TITLE, CONTENT, WDATE, SDATE, EDATE, MEMCNT, DEL, LOCATION, IMG, ITEMCOUNT, POLLTOTAL
 	FROM MEETPOLL
-	WHERE 1=1 
+	WHERE DEL=0 
 		<if test="s_category != '' and s_category != null 
 		and s_keyword != '' and s_keyword != null">
 	  		<if test="s_category == 'title'">

@@ -41,7 +41,7 @@ public class FUpUtil {
 			fre=f.substring(0,f.indexOf('.'));
 			filename=fre+fpost;
 		}else{
-			filename=f+".jpg";
+			filename=f+"road-2562568.jpg";
 		}
 		return filename;
 	} 

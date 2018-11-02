@@ -20,20 +20,17 @@
   <!-- Your custom styles (optional) -->
   <link href="resources/bootstarp/css/style.min.css" rel="stylesheet">
 <style type="text/css">
+html, body, header, .carousel {
+	height: 100%;
+}
 
-    html,
-    body,
-    header,
-    .carousel {
-      height: 100%;
-    }
+@media ( min-width : 800px) and (max-width: 850px) {
+	.navbar:not (.top-nav-collapse ) {
+		background: #1C2331 !important;
+	}
+}
+</style>
 
-    @media (min-width: 800px) and (max-width: 850px) {
-            .navbar:not(.top-nav-collapse) {
-                background: #1C2331!important;
-            }
-        }
-  </style>
 </head>
 <body>
  <!-- Navbar -->
@@ -78,7 +75,7 @@
 	          	<a class="nav-link" href="course.do">코스</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link" href="meet.do">모임</a>
+	            <a class="nav-link" href="meetpolllist.do">모임</a>
 	          </li>
 	          <li class="nav-item">
 	            <a class="nav-link" href="pdslist.do">정보</a>
