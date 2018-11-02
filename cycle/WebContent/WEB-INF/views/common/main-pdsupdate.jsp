@@ -76,7 +76,7 @@ enctype="multipart/form-data">
 <tr>
 <th>내용</th>
 <td style="text-align: left">
-<textarea style="resize: none;" rows="10" cols="50" 
+<textarea style="resize: none; width: 100%;" rows="10" cols="50" 
 name='content' id="_content">${pds.title}</textarea></td>
 </tr>
 <!-- <tr>
@@ -88,7 +88,7 @@ name='content' id="_content">${pds.title}</textarea></td>
  -->
 </table>
 </div>
-<div id="update">
+<div id="update" style="text-align: center;">
 <input type="image" src="img/btn_modify.gif">
 
 </form>

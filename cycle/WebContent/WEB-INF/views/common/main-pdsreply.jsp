@@ -68,7 +68,8 @@
 <tr>
 	<th>내용</th>
 	<td style="text-align: left">
-		<textarea rows="10" cols="80" name='content' id="_content" style="resize: none;" required="required" ></textarea>
+		<textarea rows="10" cols="80" name='content' id="_content" style="resize: none; height: 50%;
+    width: 100%;" required="required" ></textarea>
 	</td>
 </tr>
 
@@ -84,10 +85,12 @@
  </tbody>
 </table>
 
-<div id="reply">
+<!-- 답변달기 버튼  -->
+<div id="reply" style="text-align: center;">
 <input type="image" src="img/btn_reply.gif">
-
 </div>
+
+
 </form>
 <!-- 
 <script type="text/javascript">

@@ -75,11 +75,12 @@ value='${login.id}' size="50"/></td>
 </tr>
 <tr>
 <th>내용</th>
-<td style="text-align: left"><textarea rows="10" cols="50" name='content' id="_content" style="resize: none;"  required></textarea></td>
+<td style="text-align: left"><textarea rows="10" cols="50" name='content' id="_content" style="resize: none; height: 50%;
+    width: 100%;"  required></textarea></td>
 </tr>
 <tr>
 <td colspan="2" style="height:50px; text-align:center; border-bottom: none;">
-<input type="image" src="img/btn_write.gif">
+<button type="image" > 글쓰기 </button>
 	<!-- <span><a href="#none" id="_btnLogin" title="글쓰기"><img src="img/bwrite.png" /></a>
 </span> -->
 </td>
