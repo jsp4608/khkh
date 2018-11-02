@@ -8,54 +8,119 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <style type="text/css">
-
-.pds-table {
-
-    margin: 0.7em 0 0 0;
-    
-    border-top: 10px solid silver;
-    border-bottom: 10px solid silver;
-    border-left: 10px solid silver;
-    border-right: 10px solid silver;
-    
+:root {
+  --progress-bar-height: 4px;
+  --progress-bar-color: gainsboro;
+  --progress-bar-value-color: dodgerblue;
+  --progress-bar-value: 20%;
 }
 
-.pds-table td {
-    padding-top: 3px;
-    padding-left: 60px;
-    padding-bottom: 3px;
-   /*  border-bottom: 1px solid silver; */
-    line-height: 1.45;
+article {
+  position: relative;
+  padding: 24px;
+  width: 100%;
+  max-width: 700px;
+  margin: 60px auto;
 }
 
+.article-title {
+  position: sticky;
+  top: 0;
+  padding-bottom: 24px;  
+}
+
+h1 { 
+  margin-bottom: 0;
+  padding: 18px 40px 18px 0;
+  font-size: 1.8rem;
+  background-color: white;
+}
+
+img {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.progress-wrapper {
+  position: relative;
+}
+
+.progress-label {
+  position: absolute;
+  right: 0; bottom: 0;
+  font-size: 14px;
+}
+
+progress {
+  appearance: none;
+  position: absolute;
+  width: 100%;
+  height: var(--progress-bar-height);
+  background-color: var(--progress-bar-color);
+  border: none;
+  
+  &::-moz-progress-bar {
+    background-color: var(--progress-bar-value-color);
+  }
+  
+  &::-webkit-progress-bar {
+    background-color: var(--progress-bar-color);
+  }
+  
+  &::-webkit-progress-value {
+    background-color: var(--progress-bar-value-color);
+  }
+  
+  &::-ms-fill {
+    background-color: var(--progress-bar-value-color);
+  }
+}
 </style>
 </head>
 <body>
 
-<table class="pds-table">
-	<tr><h1 style="padding-left: 30px;">자전거종주 인증제</h1></tr>
-	<tr>
-	<td><img src="img/국토종주인증.PNG" style="float: left"></td>
-	<td><h2 style="float: center;">국토종주 인증제란</h2>
-	<h3>행정안전부와 국토교통부는 자전거 국토종주 시대를 열며, 자전거길 여행에서의 소중한 추억을 간직할 수 있도록 2012년 4월 22일부터 ‘국토종주 인증제’를 시행하고 있습니다.<br> 
-	‘국토종주 인증제’란 국토종주 자전거길을 달린 뿌듯함과 추억을 간직할 수 있도록 <br> 여권처럼 생긴 인증수첩에 주요지점(국토종주, 4대강 종주)의 스탬프를 모두 찍으면,
-	 <br> 자전거길 종주 사실을 공식적으로 인정하여 인증서, 인증메달 그리고 인증 스티커를 <br> 수여하는 제도입니다</h3>
-</td>
-	</tr>
-</table>
-<br>
 
-<div>
-<h1 style="padding-left: 30px; border-bottom: 1px solid silver;" >종주인증 분류</h1>
-<img style="padding-left: 200px;" src="img/image01.png">
-</div>
+<article>
+  <div class="article-title">
+    <h1>국토종주 인증제</h1>
+    <div class="progress-wrapper">
+      <div class="progress-label"></div>
+      <progress></progress>
+    </div><img src="./img/KakaoTalk_20181102_145406187.png"/>
+  </div><img src="./img/KakaoTalk_20181102_145406651.png"/>
+</article>
 
-<div>
-<h1>종주인증 절차</h1>
-<img style="padding-left: 100px;" src="img/image02.png">
-</div>
 
+
+<script type="text/javascript">
+$(document).ready(function() {
+	  const win = $(window);
+	  const doc = $(document);
+	  const progressBar = $('progress');
+	  const progressLabel = $('.progress-label');
+	  const setValue = () => win.scrollTop();
+	  const setMax = () => doc.height() - win.height();
+	  const setPercent = () => Math.round(win.scrollTop() / (doc.height() - win.height()) * 100);
+	  
+	  progressLabel.text(setPercent() + '%');
+	  progressBar.attr({ value: setValue(), max: setMax() });
+
+	  doc.on('scroll', () => {
+	    progressLabel.text(setPercent() + '%');
+	    progressBar.attr({ value: setValue() });
+	  });
+	  
+	  win.on('resize', () => {
+	    progressLabel.text(setPercent() + '%');
+	    progressBar.attr({ value: setValue(), max: setMax() });
+	  })
+	});
+
+</script>
 
 </body>
 </html>

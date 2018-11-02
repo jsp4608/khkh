@@ -72,9 +72,9 @@ html, body, header, .carousel {
 						</c:when>
 
 						<c:otherwise>
-							<li class="nav-item"><a class="nav-link" href="course.do">코스</a>
+							<li class="nav-item"><a class="nav-link" href="Certifi.do">코스</a>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="meet.do">모임</a>
+							<li class="nav-item"><a class="nav-link" href="meetpolllist.do">모임</a>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="pdslist.do">정보</a>
 							</li>
