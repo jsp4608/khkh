@@ -228,9 +228,18 @@ input[type=submit]:hover:before,input[type=submit]:hover:after{
 		<div class="form-group">
             <!--START OF A FILE UPLOAD-->
             <label>이미지 업로드</label><br>
-            <img id="meetImg" src="${meet.img }" style="height: 200px; width: 200px"
-			class="img-fluid" alt="Responsive image"><br>
-            <input type="file" class="form-control" id="uploadImg" name="uploadImg" style="width: 250px; height: 40px; margin-top: 6px;"/>
+            <c:if test="${meet.img ne 'false' }">
+	            <img id="meetImg" src="${meet.img }" style="height: 200px; width: 200px"
+				class="img-fluid" alt="Responsive image"><br>
+	            <input type="file" class="form-control" id="uploadImg" name="uploadImg" style="width: 250px; height: 40px; margin-top: 6px;"/>
+            </c:if>
+            
+            <c:if test="${meet.img eq 'false' }">
+	            <img id="meetImg" src="img/defalut.jpg" style="height: 200px; width: 200px"
+				class="img-fluid" alt="Responsive image"><br>
+	            <input type="file" class="form-control" id="uploadImg" name="uploadImg" style="width: 250px; height: 40px; margin-top: 6px;"/>
+            </c:if>
+           
             <!--END OF FILE UPLOAD-->
         </div>
         <div class="form-group">

@@ -190,12 +190,12 @@ String current = formatter.format(format);
          <div class="form-group">
             <!--START OF A REGULAR TEXT INPUT FIELD-->
             <label>이미지</label><br>
-            <c:if test="${meet.img ne null }">
+            <c:if test="${meet.img ne 'false' }">
 	            <img id="" src="img/${meet.img }"  style="height: 300px; width: 400px"
 				class="img-fluid" alt="Responsive image">
             </c:if>
-            <c:if test="${meet.img eq null }">
-				<img id="" src="img/road-2562568"  style="height: 300px; width: 400px"
+            <c:if test="${meet.img eq 'false' }">
+				<img id="" src="img/defalut.jpg"  style="height: 300px; width: 400px"
 				class="img-fluid" alt="Responsive image">
 			</c:if>
         </div>

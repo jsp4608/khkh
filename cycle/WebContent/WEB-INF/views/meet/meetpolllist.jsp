@@ -318,7 +318,7 @@ button[type=button]:hover:before,button[type=button]:hover:after{
 						<td style="text-align: left;">
 							<div class="pic">
 								<a href="meetpolldetail.do?pollid=${meet.pollid}"> <img
-									src="img/road-2562568.jpg" style="height: 300px; width: 300px;"
+									src="img/defalut.jpg" style="height: 300px; width: 300px;"
 									class="pic-image" alt="Responsive image"> <span
 									class="pic-caption top-to-bottom">
 										<h1 class="pic-title" style="margin-top: 50px; margin-bottom: 20px">${meet.title }</h1>

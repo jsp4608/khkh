@@ -199,7 +199,7 @@ input[type=button]:hover:before,input[type=button]:hover:after{
         <div class="form-group">
             <!--START OF A FILE UPLOAD-->
             <label>이미지 업로드</label><br>
-            <img id="meetImg" src="img/road-2562568.jpg" style="height: 200px; width: 200px"
+            <img id="meetImg" src="img/defalut.jpg" style="height: 200px; width: 200px"
 			class="img-fluid" alt="Responsive image"><br>
             <input type="file" class="form-control" id="uploadImg" name="uploadImg" style="width: 250px; height: 40px; margin-top: 6px;"/>
             <!--END OF FILE UPLOAD-->
