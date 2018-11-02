@@ -28,13 +28,13 @@
 	margin: 0.7em 0 0 0;
 	background: white;
 
-	/* #d1d1d1 */
+	 #d1d1d1 
 }
 
 .pds-table th {
 	font-family: Montserrat-Medium;
 	font-size: 12px;
-	color: #fff; /*  글씨 */
+	color: #fff; /*  글씨 
 	line-height: 3.0;
 	text-transform: uppercase;
 	background-color: #36304a;
@@ -46,7 +46,7 @@
 	border-bottom: 1px solid silver;
 	line-height: 2.45;
 	color: black;
-	/* #fff */
+	/* #fff 
 }
 
 .pds-table td a {

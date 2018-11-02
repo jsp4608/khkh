@@ -102,8 +102,7 @@ onclick="filedowns('${pds.filename}','${pds.seq}')"/> --%>
 </tr>
 <tr>
 <th>내용</th>
-<td style="text-align: left"><textarea style="resize: none;" rows="10" cols="50" 
-name='content' id="_content" readonly="readonly">${pds.content}</textarea></td>
+<td style="text-align: left"><textarea style="resize: none; height: 50%; width: 100%;" rows="10" cols="50" name='content' id="_content" readonly="readonly">${pds.content}</textarea></td>
 </tr>
 </table>
 </div>
@@ -116,7 +115,7 @@ name='content' id="_content" readonly="readonly">${pds.content}</textarea></td>
 
 
 
-<div id="search">
+<div id="search" style="text-align: center;">
 <c:if test="${pds.id eq login.id}">
 	<button type="button" id="_btnAdd" style="background-color:transparent; border: 0px"><img src="img/btn_modify.gif"><!-- 수정 --></button>
 	</c:if>
