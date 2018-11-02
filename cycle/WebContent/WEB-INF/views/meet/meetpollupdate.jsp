@@ -8,7 +8,7 @@
 <fmt:requestEncoding value="utf-8" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
 
 <style>
 button[type=button]{

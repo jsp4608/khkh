@@ -50,7 +50,7 @@
 </definition>
 
 <definition name="meetpolllist.tiles" extends="meet.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/meet/meetpolllist2.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/meet/meetpolllist.jsp"/>
 </definition>
 
 <definition name="meetpollbbs.tiles" extends="meet.tiles">

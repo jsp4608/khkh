@@ -3,10 +3,7 @@
     pageEncoding="UTF-8"%>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-<!--CHANGE THE SRC AND HREF OF THE JS AND CSS HERE!!!-->
-<!-- <script src="/temp/Shared%20Documents/sp-forms.js"></script>
-<link rel="stylesheet" href="/temp/Shared%20Documents/sp-forms.css"></link> -->
+
 
 <script type="text/javascript">
 $(document).ready(function () {
