@@ -6,8 +6,11 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <head>
+
+<link rel= "<%= request.getContextPath() %>/css/bootstrap.css">
+
 <style type="text/css">
-.pds-table {
+/* .pds-table {
     width: 100%;
     margin: 0.7em 0 0 0;
     background-color : white;
@@ -15,7 +18,7 @@
 .pds-table th {
    font-family: Montserrat-Medium;
 	font-size: 12px;
-	color: #fff; /*  글씨 */
+	color: #fff; /*  글씨 
 	line-height: 3.0;
 	border-bottom: 1px solid black;
 	text-transform: uppercase;
@@ -43,7 +46,7 @@
     padding-right: 0px;
     font-size: 0.9em;
     line-height: 1.6;
-}
+} */
 </style>
 </head>
 
@@ -53,7 +56,7 @@ enctype="multipart/form-data">
 <input type="hidden" name='seq' value="${pds.seq}"/>
 
 <div id="content">
-<table class="pds-table" style="width:85%;">
+<table class="table table-bordered" style="width:85%;">
 
 <tr>
 <th style="border-top: 1px solid black;">아이디</th>

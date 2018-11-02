@@ -11,8 +11,11 @@
 
 
 <head>
+
+<link rel= "<%= request.getContextPath() %>/css/bootstrap.css">
+
 <style type="text/css">
-.pds-table {
+/* .pds-table {
     width: 100%;
     margin: 0.7em 0 0 0;
     background: white;
@@ -46,7 +49,7 @@
     padding-right: 0px;
     font-size: 0.9em;
     line-height: 1.6;
-}
+} */
 </style>
 </head>
 
@@ -54,7 +57,7 @@
 
 <form name="frmForm" id="_frmForm" action="pdsupload.do" method="post" 
 enctype="multipart/form-data">
-<table class="pds-table" style="width:85%;">
+<table class="table table-bordered" style="width:85%; margin-left: auto; margin-right: auto">
 
 
 <tr>

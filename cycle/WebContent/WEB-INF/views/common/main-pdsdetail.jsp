@@ -10,8 +10,11 @@ MemberDto login = (MemberDto) session.getAttribute("login");
 %>
 
 <head>
+<link rel= "<%= request.getContextPath() %>/css/bootstrap.css">
+
+
 <style type="text/css">
-.pds-table {
+/* .pds-table {
     width: 100%;
     margin: 0.7em 0 0 0;
     background: white;
@@ -46,9 +49,7 @@ MemberDto login = (MemberDto) session.getAttribute("login");
     font-size: 0.9em;
     line-height: 1.6;
 }
-    
-
-
+ */    
 </style>
 
 </head>
@@ -57,7 +58,7 @@ MemberDto login = (MemberDto) session.getAttribute("login");
 <form name="frmForm2" id="_frmForm2" action="pdsupdate.do" method="post">
 
 <div id="content">
-<table class="pds-table" style="width:85%;">
+<table class="table table-bordered" style="width:85%; margin-left: auto; margin-right: auto">
 <input type="hidden" name="seq" value="${pds.seq}"/>
 
 <tr>

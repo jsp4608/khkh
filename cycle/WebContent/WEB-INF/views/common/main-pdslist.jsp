@@ -11,8 +11,10 @@
 
 
 <head>
-<style type="text/css">
 
+<link rel= "<%= request.getContextPath() %>/css/bootstrap.css">
+<style type="text/css">
+/* 
 #content {
 	margin-left: 0px;
 	margin-right: 0px;
@@ -55,7 +57,7 @@
 #paging {
 	text-align: center;
 	font-size: 13px;
-}
+} */
 </style>
 </head>
 
@@ -83,17 +85,17 @@ var str='<%=category%>
 
 	<jsp:useBean id="pdsA" class="cycle.controller.PdsArrow" />
 
-	<table class="pds-table" style="width: 100%;">
+	<table class="table table-hover" style="width: 100%;">
 		<thead>
-			<tr>
-				<th style="width: 50px;">번호</th>
-				<th style="width: 60px;">작성자</th>
+			<tr style="text-align: center;">
+				<th style="width: 100px;">번호</th>
+				<th style="width: 100px;">작성자</th>
 				<th>제목</th>
-				<th style="width: 70px;">다운로드</th>
-				<th style="width: 60px;">조회수</th>
-				<th style="width: 60px;">다운수</th>
+				<th style="width: 100px;">다운로드</th>
+				<th style="width: 100px;">조회수</th>
+				<th style="width: 100px;">다운수</th>
 				<th style="width: 200px;">작성일</th>
-				<th style="width: 50px;">삭제</th>
+				<th style="width: 100px;">삭제</th>
 			</tr>
 		</thead>
 
@@ -124,8 +126,8 @@ var str='<%=category%>
 
 					<td style="text-align: left"><c:if
 							test="${pds.id eq login.id}">
-							<img src="./img/btn_select_delete.gif" data-attache_file_name="${pds.seq}"
-								class="btn_fileDelete" />
+<%-- 							<img src="./img/btn_select_delete.gif" data-attache_file_name="${pds.seq}" class="btn_fileDelete" /> --%>							
+								<button data-attache_file_name="${pds.seq}" class="btn_fileDelete">  삭제  </button>
 						</c:if></td>
 
 				</tr>
@@ -151,9 +153,9 @@ var str='<%=category%>
 				<td style="padding-left: 5px;"><input type="text"
 					id="_s_keyword" name="s_keyword" value="${s_keyword}" /></td>
 				<td style="padding-left: 10px;">
-				<button type="button" id="_btnSearch" style="background-color:transparent; border: 0px"><img src="img/btn_search.gif"><!-- 검색 --></button></td>
+				<button type="button" id="_btnSearch" > 검색 <!-- 검색 --></button></td>
 				<td style="padding-left: 10px;">
-				<button type="button" id="_btnAdd" style="background-color: transparent; border: 0px;" ><img src="img/btn_write.gif"></button></td>
+				<button type="button" id="_btnAdd" > 글쓰기 </button></td>
 			</tr>
 		</table>
 
