@@ -49,6 +49,9 @@
 				</button>
 				<button id="btn-tts">전자음성</button>
 				<audio id="audio" src="audio/ending.mp3"></audio>
+				
+				
+				
 
 				<!--    <br><br>
 		<div>
@@ -70,11 +73,31 @@
 
   </div>
   <!-- Full Page Intro -->
- 
-	
+  
+  <div id="content">
+  <div class="wrap">
+  	<div class="two-peace">
+	  	<div>
+		    <video id="video" width="350" height="260" autoplay></video>
+	  	</div>
+	  	<div>
+		    <canvas id="canvas" width="350" height="260"></canvas>
+	  	</div>
+  	</div>
+    <button id="btn-camera">1. 비디오출력</button>
+    <button id="btn-capture">2. 캡쳐</button>
+    <hr>
 
+	  <div id="output">
+	  	<strong>Capture images</strong>
+	  	<div id="images">
 
+	  	</div>
+	  </div>
+  </div>
+</div>
 
+<script src="js/video.js"></script>
 <script src="js/main.js"></script>
 
 

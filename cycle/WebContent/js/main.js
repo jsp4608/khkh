@@ -15,7 +15,7 @@ $(function() {
   let ignoreEndProcess = false;
   let finalTranscript = '';
 
- 	const audio = document.querySelector('#audio');
+  const audio = document.querySelector('#audio');
   const recognition = new webkitSpeechRecognition();
   const language = 'ko-KR';
   const two_line = /\n\n/g;
@@ -124,15 +124,17 @@ $(function() {
   		audio.volume -= 0.2;
   	} else if (string.endsWith('스피치') || string.endsWith('말해줘') || string.endsWith('말 해 줘')) {
   	  textToSpeech($('#final_span').text() || '전 음성 인식된 글자를 읽습니다.');
-  	} else if(string.endsWith('로그인') || string.endsWith('로그 인')){
-  		location.href="login.do";
   	} else if(string.endsWith('로그아웃') || string.endsWith('로그 아웃')){
   		location.href="logout.do";
+  	} else if(string.endsWith('홈') || string.endsWith('메인')){
+  		location.href="main.do";
   	} else if(string.endsWith('코스') || string.endsWith('코 스')){
-  		location.href="course.do";
+  		location.href="Certifi.do";
   	} else if(string.endsWith('모임') || string.endsWith('모 임')){
-  		location.href="meet.do";
+  		location.href="meetpolllist.do";
   	} else if(string.endsWith('정보') || string.endsWith('정 보')){
+  		location.href="pdslist.do";
+  	} else if(string.endsWith('카메라') || string.endsWith('카 메 라') || string.endsWith('카메 라') || string.endsWith('사진') || string.endsWith('비디오')){
   		location.href="pdslist.do";
   	}
   }
