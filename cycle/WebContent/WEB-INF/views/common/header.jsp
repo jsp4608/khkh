@@ -85,7 +85,7 @@ html, body, header, .carousel {
 
 
 					<li class="nav-item"><c:if test="${login.id eq 'admin' }">
-							<a href="admin.do" style="position: absolute; right: 20px">관리자</a>
+							<a class="nav-link" href="admin.do" style="position: absolute; right: 20px">관리자</a>
 						</c:if></li>
 
 				</ul>
