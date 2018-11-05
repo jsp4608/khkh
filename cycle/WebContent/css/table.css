@@ -8,6 +8,8 @@ table {
   table-layout: fixed;
   width: 100%;
 }
+
+
 table caption {
   font-size: 1.5em;
   margin: .5em 0 .75em;
@@ -22,7 +24,7 @@ table tr:nth-child(even) {
 table th,
 table td {
   padding: .625em;
-  text-align: left;
+  text-align: center;
 }
 table th {
   background: #999;

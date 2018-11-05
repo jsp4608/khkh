@@ -480,8 +480,7 @@
 				}; 
 				
 				 var str = JSON.stringify(obj); 
-				 
-				 alert(str);
+
 				 
 				alert("코스를 추천하셨습니다. 관리자 승인후 코스정보 페이지에 게시됩니다.");
 				

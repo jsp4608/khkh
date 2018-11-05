@@ -353,7 +353,7 @@ h2.no-span {
 				out++;
 			} else if (out >= str.length) {
 				$('shuffle').innerHTML = '';
-				removeInterval(t);
+
 			}
 			$('shuffle').innerHTML = chars[Math.floor(Math.random()
 					* chars.length)];

@@ -17,7 +17,6 @@
 </head>
 <body>
 <table>
-  <h2>최저디자인</h2>
   <thead>
     <tr>
       <th scope="col">시퀀스</th>

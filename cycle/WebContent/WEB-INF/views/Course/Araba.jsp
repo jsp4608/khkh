@@ -21,7 +21,7 @@ body{
     border: solid 1px #DDEEEE;
     color: #336B6B;
     padding: 10px;
-    text-align: left;
+    text-align: center;
     text-shadow: 1px 1px 1px #fff;
 }
 .zui-table tbody td {
@@ -344,7 +344,6 @@ h2.no-span {
 				out++;
 			} else if (out >= str.length) {
 				$('shuffle').innerHTML = '';
-				removeInterval(t);
 			}
 			$('shuffle').innerHTML = chars[Math.floor(Math.random()
 					* chars.length)];
