@@ -179,7 +179,7 @@ public class MeetController {
 		
 	//	String fupload = "c:\\tmp";
 	//	String fupload = req.getServletContext().getRealPath("/upload");
-		String fupload = "C:\\Users\\sp\\Desktop\\finalfinalfinal\\cycle\\WebContent\\img";
+		String fupload = "C:\\Users\\msuh1\\OneDrive\\바탕 화면\\finalfinal\\cycle\\WebContent\\img";
 		System.out.println("파일 경로:" + fupload);
 		
 		String f = pbean.getImg();
