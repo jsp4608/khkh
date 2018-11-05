@@ -6,10 +6,21 @@
  *
  */
 $(function() {
+	
+	
+	  
   if (typeof webkitSpeechRecognition !== 'function') {
     alert('크롬에서만 동작 합니다.');
     return false;
   }
+  
+	  navigator.getUserMedia = navigator.getUserMedia ||
+	  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+	const videoEl = document.getElementById('video');
+	const canvasEl = document.getElementById('canvas');
+	const width = 350;
+	const height = 260;
 
   let isRecognizing = false;
   let ignoreEndProcess = false;
@@ -123,7 +134,7 @@ $(function() {
   	} else if (string.endsWith('볼륨 다운') || string.endsWith('볼륨다운')) {
   		audio.volume -= 0.2;
   	} else if (string.endsWith('스피치') || string.endsWith('말해줘') || string.endsWith('말 해 줘')) {
-  	  textToSpeech($('#final_span').text() || '전 음성 인식된 글자를 읽습니다.');
+  	  textToSpeech($('#final_span').text() || '전 음성 인식된 글자를 읽습니다다다.');
   	} else if(string.endsWith('로그아웃') || string.endsWith('로그 아웃')){
   		location.href="logout.do";
   	} else if(string.endsWith('홈') || string.endsWith('메인')){
@@ -134,10 +145,19 @@ $(function() {
   		location.href="meetpolllist.do";
   	} else if(string.endsWith('정보') || string.endsWith('정 보')){
   		location.href="pdslist.do";
-  	} else if(string.endsWith('카메라') || string.endsWith('카 메 라') || string.endsWith('카메 라') || string.endsWith('사진') || string.endsWith('비디오')){
-  		location.href="pdslist.do";
+  	} else if(string.endsWith('카메라 켜') || string.endsWith('카 메 라') || string.endsWith('카메 라') || string.endsWith('사진') || string.endsWith('비디오')){
+  		$('#content1').show();
+  		navigator.getUserMedia({ audio: false, video: true }, success, error);
+  	} else if(string.endsWith('카메라 꺼')){
+  		$('#btn-capture').last().trigger('click');
+  		$('#content1').hide();
+  		navigator.getUserMedia({ audio: false, video: false }, success, error);
+  	} else if(string.endsWith('사진 찍어')){
+  		$('#btn-capture').last().trigger('click');
   	}
   }
+
+  
 
   /**
    * 개행 처리
@@ -217,16 +237,68 @@ $(function() {
       }
     });
   }
+  
+  
+  /* 비디오 */
+  /**
+   * getUserMedia 성공
+   * @param stream
+   */
+  function success(stream) {
+    videoEl.srcObject = stream;
+  }
+
+  /**
+   * getUserMedia 실패
+   * @param err
+   */
+  function error(err) {
+    console.log('error', arguments);
+  }
+
+  /**
+   * 비디오 이미지 캡쳐
+   */
+  function capture() {
+    const context = canvasEl.getContext('2d');
+    context.drawImage(videoEl, 0, 0, width, height);
+    insertImage(canvasEl.toDataURL('image/png'));
+  }
+  
+  
+
+  /**
+   * 캡쳐한 이미지 노출 함수
+   * @param imageData
+   */
+  function insertImage(imageData) {
+    $('#images').prepend("<img src=" + imageData + " />");
+  }
+  
+  
 
   /**
    * 초기 바인딩
    */
   function initialize() {
+	  
+	canvasEl.width = width;
+	canvasEl.height = height;
+
     $btnMic.click(start);
     $('#btn-tts').click(function() {
       const text = $('#final_span').text() || '전 음성 인식된 글자를 읽습니다.';
       textToSpeech(text);
     });
+    
+    $('#content1').hide();
+
+    $('#btn-camera').click(function() {
+      // getUserMedia(접근할 미디어, 성공 callback, 실패 callback);
+      navigator.getUserMedia({ audio: false, video: true }, success, error);
+    });
+
+    $('#btn-capture').click(capture);
   }
 
   initialize();
